@@ -1,9 +1,10 @@
 ﻿#pragma strict
 
-function Start () {
+function Start() {
 
 }
 
-function Update () {
-
+function Update() {
+		GetComponent.<Renderer>().enabled = !GetComponent.<Renderer>().enabled;
+		Debug.Log("yo");
 }
