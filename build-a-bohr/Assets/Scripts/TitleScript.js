@@ -2,15 +2,12 @@
 
 function Start() {
 	Invoke("Load", 10);
-	
 }
 
 function Update() {
-	if(Input.GetMouseButtonDown(0)){
-			Load();
-			
-	}	
-	
+	if(Input.GetMouseButtonDown(0)) {
+		Load();	
+	}
 }
 
 function Load() {
