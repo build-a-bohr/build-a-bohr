@@ -1,7 +1,7 @@
 ﻿#pragma strict
 
 function Start() {
-	Invoke("Load", 4);
+	Invoke("Load", 10);
 }
 
 function Update() {
