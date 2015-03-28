@@ -5,9 +5,9 @@ function Start() {
 }
 
 function Update() {
-	if(Input.GetMouseButtonDown(0)) {
-		Load();	
-	}
+	//if(Input.GetMouseButtonDown(0)) {
+		//Load();	
+	//}
 }
 
 function Load() {
