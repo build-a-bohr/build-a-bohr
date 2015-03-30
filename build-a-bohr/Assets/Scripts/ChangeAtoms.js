@@ -6,8 +6,9 @@ public static var neutrons = 0.0;
 
 // Convert user input to a number
 function NumberOfProtons(howmanyP : String){
-	 protons = parseInt (howmanyP);
+	 protons = parseInt(howmanyP);
 }
+
 function NumberOfNeutrons(howmanyN : String){
-     neutrons = parseInt (howmanyN);
+     neutrons = parseInt(howmanyN);
 }
