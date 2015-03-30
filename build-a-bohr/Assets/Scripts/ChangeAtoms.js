@@ -8,6 +8,6 @@ public static var neutrons = 0.0;
 function NumberOfProtons(howmanyP : String){
 	 protons = parseInt (howmanyP);
 }
-function NumberOfNeutrons(howmanyN : string){
+function NumberOfNeutrons(howmanyN : String){
      neutrons = parseInt (howmanyN);
 }
