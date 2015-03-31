@@ -5,6 +5,7 @@ function Start() {
 }
 
 function Update() {
+
 }
 
 function Load() {
