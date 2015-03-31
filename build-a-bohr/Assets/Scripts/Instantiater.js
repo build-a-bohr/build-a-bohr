@@ -8,7 +8,7 @@ function Update () {
   number = ChangeAtoms.protons;
   Debug.Log(number);
   if(number > 0 && number <= 20){
-   range = 1.00;
+   range = 0.50;
   }
   if(number > 20 && number <= 45){
    range = 2.00;
@@ -23,7 +23,7 @@ function Update () {
     if(number == 0){
      number = ChangeAtoms.protons;
     }
-    if(number > 0){
+    if(number > 0 && number < 118){
      Debug.Log("Create");
      Create();
      prevnumber = ChangeAtoms.protons;
@@ -33,7 +33,7 @@ function Update () {
 
 function Create (){
  for (var y = 0; y < number; y++) {
-      Instantiate(protons, Vector3 (Random.Range(0.0, range), Random.Range(0.0, range +1), 0), Quaternion.identity);
+      Instantiate(protons, Vector3 (Random.Range(0.0, range + 1), Random.Range(0.0, range + 1), 0), Quaternion.identity);
        
     }
 }
