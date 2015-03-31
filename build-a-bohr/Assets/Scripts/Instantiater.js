@@ -19,7 +19,7 @@ function Change() {
 	Debug.Log("Change()");
 
 	if(number > 0 && number <= 45) {
-		range = 1.00;
+		range = 0.50;
 	}
 	if(number > 45 && number < 93) {
 		range = 3.00;
@@ -45,7 +45,7 @@ function Change() {
 
 function Create() {
 	for(var y = 0; y < number; y++) {
-		Instantiate(protons, Vector3 (Random.Range(0.0, range), Random.Range(0.0, range), 0), Quaternion.identity);
+		Instantiate(protons, Vector3 (Random.Range(0.0, range + 1), Random.Range(0.0, range + 1), 0), Quaternion.identity);
 	}
 }
 
