@@ -7,6 +7,7 @@ var neutrons : Transform;
 var numProtons = ChangeAtoms.protons;
 var numNeutrons = ChangeAtoms.neutrons;
 var prevNumProtons = 0;
+var prevNumNeutrons = 0;
 var range = 0;
 
 function Update() {
@@ -18,7 +19,13 @@ function Update() {
 		Debug.Log("numProtons: " + numProtons);
 
 		Changer();
-	} else if(numProtons > TOTAL_NUM_ELEMENTS && numNeutrons > TOTAL_NUM_ELEMENTS ) {
+	} 
+	
+	if(numNeutrons != prevNumNeutrons && numNeutrons != 0 && numNeutrons <= TOTAL_NUM_ELEMENTS){
+	 Changer();
+	}
+	
+	else if(numProtons > TOTAL_NUM_ELEMENTS && numNeutrons > TOTAL_NUM_ELEMENTS ) {
 		Destroyer("proton");
 		
 	}
@@ -27,14 +34,16 @@ function Update() {
 function Changer() {
 	Debug.Log("Changer()");
 
-	if(numProtons > 0 && numProtons <= 20) {
-		range = 0.75;
+	if(numProtons > 0 && numProtons <= 20 && numNeutrons < 25) {
+		range = 0.50;
+	}
+	if(numProtons > 0 && numProtons <= 20 && numNeutrons > 25) {
 	}
 	if(numProtons > 20 && numProtons <= 45){
-	 range = 1.00;
+	 range = 0.75;
 	} 
 	if(numProtons > 45 && numProtons < 93) {
-		range = 1.50;
+		range = 1.00;
 	}
 	if(numProtons > 93 && numProtons <= 118) {
 		range = 2.00;
@@ -56,6 +65,7 @@ function Changer() {
 	}
 	if(numNeutrons > 0 && numNeutrons <= TOTAL_NUM_ELEMENTS) {			
 		CreatorN();
+		prevNumNeutrons = ChangeAtoms.neutrons;
 		
 	}
 }
