@@ -21,7 +21,7 @@ function Update() {
 		Changer();
 	} 
 	
-	if(numNeutrons != prevNumNeutrons && numNeutrons != 0 && numNeutrons <= TOTAL_NUM_ELEMENTS){
+	if(numNeutrons != prevNumNeutrons && numNeutrons != 0){
 	 Changer();
 	}
 	
@@ -43,7 +43,7 @@ function Changer() {
 	 range = 0.75;
 	} 
 	if(numProtons > 45 && numProtons < 93) {
-		range = 1.00;
+		range = 0.85;
 	}
 	if(numProtons > 93 && numProtons <= 118) {
 		range = 2.00;
