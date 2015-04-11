@@ -77,7 +77,7 @@ function CreatorP() {
 	Debug.Log("Creator()"); // check if actually happening
 
 	for(var y = 0; y < numProtons; y++) {
-		var pos = Vector3(Random.Range(0.0, range + 1), Random.Range(0.0, range + 1), Random.Range(-1.0, 1.0));
+		var pos = Vector3(Random.Range(0.0, range), Random.Range(0.0, range), Random.Range(-1.0, 1.0));
 		Instantiate(protons, pos, Quaternion.identity);
 	}
 	
