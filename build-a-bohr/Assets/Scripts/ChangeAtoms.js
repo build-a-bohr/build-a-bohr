@@ -5,17 +5,17 @@ public static var protons = 0.0;
 public static var neutrons = 0.0;
 
 // Convert user input to a number
-function NumberOfProtons(howmanyP : String) {
+function NumberOfProtons(howManyP : String) {
 	try {
-		protons = parseInt(howmanyP);
+		protons = parseInt(howManyP);
 	} catch(e) {
 		Debug.Log("Empty string passed to parseInt in function NumberOfProtons()");
 	}
 }
 
-function NumberOfNeutrons(howmanyN : String) {
+function NumberOfNeutrons(howManyN : String) {
 	try {
-     neutrons = parseInt(howmanyN);
+		neutrons = parseInt(howManyN);
 	} catch(e) {
 		Debug.Log("Empty string passed to parseInt in function NumberOfNeutrons()");
 	}

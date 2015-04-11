@@ -21,13 +21,10 @@ function Update() {
 		Changer();
 	} 
 	
-	if(numNeutrons != prevNumNeutrons && numNeutrons != 0){
-	 Changer();
-	}
-	
-	else if(numProtons > TOTAL_NUM_ELEMENTS && numNeutrons > TOTAL_NUM_ELEMENTS ) {
+	if(numNeutrons != prevNumNeutrons && numNeutrons != 0) {
+		Changer();
+	} else if(numProtons > TOTAL_NUM_ELEMENTS && numNeutrons > TOTAL_NUM_ELEMENTS ) {
 		Destroyer("proton");
-		
 	}
 }
 
@@ -37,10 +34,9 @@ function Changer() {
 	if(numProtons > 0 && numProtons <= 20 && numNeutrons < 25) {
 		range = 0.50;
 	}
-	if(numProtons > 0 && numProtons <= 20 && numNeutrons > 25) {
-	}
-	if(numProtons > 20 && numProtons <= 45){
-	 range = 0.75;
+	//if(numProtons > 0 && numProtons <= 20 && numNeutrons > 25) {}
+	if(numProtons > 20 && numProtons <= 45) {
+		range = 0.75;
 	} 
 	if(numProtons > 45 && numProtons < 93) {
 		range = 0.85;
@@ -49,7 +45,7 @@ function Changer() {
 		range = 2.00;
 	}
 	
-	//Destroyer("proton");
+	Destroyer("proton");
 	
 	if(numProtons == 0) {
 		numProtons = ChangeAtoms.protons;
@@ -63,7 +59,7 @@ function Changer() {
 		CreatorP();
 		prevNumProtons = ChangeAtoms.protons;
 	}
-	if(numNeutrons > 0 && numNeutrons <= TOTAL_NUM_ELEMENTS) {			
+	if(numNeutrons > 0) {			
 		CreatorN();
 		prevNumNeutrons = ChangeAtoms.neutrons;
 		
