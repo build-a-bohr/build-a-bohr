@@ -2,8 +2,12 @@
 
 var MessageText : UnityEngine.UI.Text;
 
-var MessageArr = ["this is message 1", "this is message 2"]; // primitive message system
-var i = 0;
+private var MessageArr = [
+	"Good day!  I am Ernest Rutherford, and in 1920, I discovered a positively charged subatomic particle which I called a proton.",
+	"The number of protons in an atom is what determines what the element is. "
+];
+
+private var i = 0;
 
 function Start() {
 

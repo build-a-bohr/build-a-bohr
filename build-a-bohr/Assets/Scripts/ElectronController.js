@@ -14,15 +14,27 @@ var electronsToCount = 0;
 
 
 function Start () {
+<<<<<<< HEAD
  electrons = ChangeAtoms.protons;
 }
 function Update (){
 if(electrons > 0){
   Create ();
  }
-
+=======
+	electrons = protons;
 }
+>>>>>>> origin/master
+
+function Update () {
+	//Debug.Log(Mathf.Acos(Mathf.PI/4));
+	if(electrons > 0) {
+		Create ();
+	}
+}
+
 function Create () {
+<<<<<<< HEAD
  if(electrons > 0){
   	var pos = Vector3(0, 0, 1);
   	Instantiate(BohrShell, pos, Quaternion.identity);
@@ -87,4 +99,29 @@ function Create () {
   			
   		
  }	
+=======
+	if(electrons > 0) {
+		var pos = Vector3(0, 0, 1);
+		Instantiate(BohrShell, pos, Quaternion.identity);
+		if(electrons >= 2) {
+		electronsToCount = 2;
+	}
+	
+	if(electrons < 2) {
+		electronsToCount = electrons;
+	}
+	
+	// use trig to spawn 2 electrons around the cricle
+	for(var y = electronsToCount; y > 0; y -= 1) {
+		Instantiate(electronSprite, Vector3((n * Mathf.Acos(0)), 0, 0), Quaternion.identity);
+		n = -1;
+	}
+	electrons -= 2;
+	//if(electrons > 0) {
+	//Instantiate(BohrShell, pos, Quaternion.identity);
+	//BohrShell.transform.localScale += new Vector2(0.2F, 0.2F);
+	//	electrons -= 8;
+	//}
+	}
+>>>>>>> origin/master
 }
