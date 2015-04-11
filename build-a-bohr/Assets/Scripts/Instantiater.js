@@ -14,7 +14,6 @@ function Update() {
 	numProtons = ChangeAtoms.protons;
 	numNeutrons = ChangeAtoms.neutrons;
 
-
 	if(numProtons != prevNumProtons && numProtons != 0 && numProtons <= TOTAL_NUM_ELEMENTS) {
 		Debug.Log("numProtons: " + numProtons);
 
@@ -76,9 +75,8 @@ function CreatorP() {
 		var pos = Vector3(Random.Range(0.0, range + 1), Random.Range(0.0, range + 1), Random.Range(-1.0, 1.0));
 		Instantiate(protons, pos, Quaternion.identity);
 	}
-	
-	
 }
+
 function CreatorN() {
 	Debug.Log("Creator()"); // check if actually happening
 
@@ -86,8 +84,6 @@ function CreatorN() {
 		var pos = Vector3(Random.Range(0.0, range + 1), Random.Range(0.0, range + 1), Random.Range(-1.0, 1.0));
 		Instantiate(neutrons, pos, Quaternion.identity);
 	}
-	
-	
 }
 
 function Destroyer(particle) {

@@ -13,7 +13,7 @@ function Start () {
 }
 
 function Update () {
-	Debug.Log(Mathf.Acos(Mathf.PI/4));
+	//Debug.Log(Mathf.Acos(Mathf.PI/4));
 	if(electrons > 0) {
 		Create ();
 	}
@@ -23,7 +23,7 @@ function Create () {
 	if(electrons > 0) {
 		var pos = Vector3(0, 0, 1);
 		Instantiate(BohrShell, pos, Quaternion.identity);
-		if(electrons >= 2){
+		if(electrons >= 2) {
 		electronsToCount = 2;
 	}
 	
