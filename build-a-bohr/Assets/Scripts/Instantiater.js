@@ -8,7 +8,7 @@ var numProtons = ChangeAtoms.protons;
 var numNeutrons = ChangeAtoms.neutrons;
 var prevNumProtons = 0;
 var prevNumNeutrons = 0;
-var range = 0;
+var range : float = 0;
 
 function Update() {
 	numProtons = ChangeAtoms.protons;
@@ -31,7 +31,7 @@ function Changer() {
 	Debug.Log("Changer()");
 
 	if(numProtons > 0 && numProtons <= 20 && numNeutrons < 25) {
-		range = 0.50;
+		range = 0.75;
 	}
 	//if(numProtons > 0 && numProtons <= 20 && numNeutrons > 25) {}
 	if(numProtons > 20 && numProtons <= 45) {
@@ -81,7 +81,7 @@ function CreatorN() {
 	Debug.Log("Creator()"); // check if actually happening
 
 	for(var y = 0; y < numProtons; y++) {
-		var pos = Vector3(Random.Range(0.0, range + 1), Random.Range(0.0, range + 1), Random.Range(-1.0, 1.0));
+		var pos = Vector3(Random.Range(0.0, range), Random.Range(0.0, range), Random.Range(-1.0, 1.0));
 		Instantiate(neutrons, pos, Quaternion.identity);
 	}
 }

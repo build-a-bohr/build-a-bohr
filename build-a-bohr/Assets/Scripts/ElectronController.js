@@ -55,12 +55,41 @@ function Create () {
   		if(electrons < 8){
   	 		electronsToCount = electrons;
   		}
-  		for(y = electronsToCount; y > 0; y -= 1){
-  			Instantiate(electronSprite, Vector3(Mathf.Cos((4*Mathf.PI/8) - shift)*scale, Mathf.Sin((4*Mathf.PI/8) - shift)*scale, 0), Quaternion.identity);
-  			shift += (2*Mathf.PI/8);
+  		for(y = electronsToCount; y > electronsToCount - 4 && y > 0; y -= 1){
+  			Instantiate(electronSprite, Vector3(Mathf.Cos((7*Mathf.PI/16) - shift)*scale, Mathf.Sin((7*Mathf.PI/16) - shift)*scale, 0), Quaternion.identity);
+  			shift += (8*Mathf.PI/16);
   			Debug.Log(shift);
   		}
-  		electrons = 0;
+  		shift = 0;
+  		for(y = y; y <= electronsToCount - 4 && y > 0; y -= 1){
+  			Instantiate(electronSprite, Vector3(Mathf.Cos((9*Mathf.PI/16) - shift)*scale, Mathf.Sin((9*Mathf.PI/16) - shift)*scale, 0), Quaternion.identity);
+  			shift += (8*Mathf.PI/16);
+  			Debug.Log(shift);
+  		}
+  		electrons -= 8;
+  		if(electrons > 0){
+    		pos = Vector3(0, 0, 1);
+    		scale = 2.5;
+  			Instantiate(BohrShell2, pos, Quaternion.identity);
+    		if(electrons >= 18){
+  	 			electronsToCount = 18;
+  			}
+  			if(electrons < 18){
+  	 			electronsToCount = electrons;
+  			}
+  			for(y = electronsToCount; y > electronsToCount - 4 && y > 0; y -= 1){
+  				Instantiate(electronSprite, Vector3(Mathf.Cos((7*Mathf.PI/16) - shift)*scale, Mathf.Sin((7*Mathf.PI/16) - shift)*scale, 0), Quaternion.identity);
+  				shift += (8*Mathf.PI/16);
+  				Debug.Log(shift);
+  			}
+  			shift = 0;
+  			for(y = y; y <= electronsToCount - 4 && y > 0; y -= 1){
+  				Instantiate(electronSprite, Vector3(Mathf.Cos((9*Mathf.PI/16) - shift)*scale, Mathf.Sin((9*Mathf.PI/16) - shift)*scale, 0), Quaternion.identity);
+  				shift += (8*Mathf.PI/16);
+  				Debug.Log(shift);
+  			}
+  			electrons -= 18;
     }
 }
 }  	
+}
