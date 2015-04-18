@@ -1,10 +1,16 @@
-﻿#pragma strict
+﻿/**
+ * @file Gets value of protons and neutrons from text boxes
+ * @license BSD-3-Clause
+ * @author Aaron Raimist <aaronraimist@protonmail.ch>
+ * @author Eli Verbrugge <eli.verbrugge@gmail.com>
+ */
+
+#pragma strict
 
 // global vars used to tell the instantiater how many particles to create
 public static var protons = 0.0;
 public static var neutrons = 0.0;
 
-// Convert user input to a number
 function NumberOfProtons(howManyP : String) {
 	try {
 		protons = parseInt(howManyP);
