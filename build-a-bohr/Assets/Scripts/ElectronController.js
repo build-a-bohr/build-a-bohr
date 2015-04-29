@@ -79,8 +79,8 @@ function Create () {
   	 			electronsToCount = electrons;
   			}
   			for(y = electronsToCount; y > electronsToCount - 8 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
-  				Instantiate(electronSprite, Vector3(Mathf.Cos((2*Mathf.PI/4) - shift)*scale, Mathf.Sin((2*Mathf.PI/4) - shift)*scale, 0), Quaternion.identity);
-  				shift += (1*Mathf.PI/4);
+  				Instantiate(electronSprite, Vector3(Mathf.Cos((1*Mathf.PI/9) - shift)*scale, Mathf.Sin((1*Mathf.PI/9) - shift)*scale, 0), Quaternion.identity);
+  				shift += (2*Mathf.PI/9);
   			}
   			electronsToCount -= 8;
   			shift = 0;
@@ -90,13 +90,20 @@ function Create () {
   				Instantiate(electronSprite, Vector3(Mathf.Cos((0*Mathf.PI/4) - shift)*scale, Mathf.Sin((0*Mathf.PI/4) - shift)*scale, 0), Quaternion.identity);
   				shift += (1*Mathf.PI/4);
   			}
-  			//scale = 3.5;
-  			//for(y = electronsToCount; y > electronsToCount - 8 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
-  			//	Instantiate(electronSprite, Vector3(Mathf.Cos((1*Mathf.PI/8) - shift)*scale, Mathf.Sin((1*Mathf.PI/8) - shift)*scale, 0), Quaternion.identity);
-  			//	shift += (1*Mathf.PI/8);
-  			//}
+  			electronsToCount -= 2;
+  			scale = 3.5;
+  			for(y = electronsToCount; y > electronsToCount - 9 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
+  				Instantiate(electronSprite, Vector3(Mathf.Cos((0*Mathf.PI/9) - shift)*scale, Mathf.Sin((0*Mathf.PI/9) - shift)*scale, 0), Quaternion.identity);
+  				shift += (2*Mathf.PI/9);
+  			}
+  			electronsToCount -= 9;
+  			for(y = electronsToCount; y > electronsToCount - 1 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
+  				Instantiate(electronSprite, Vector3(Mathf.Cos((7.5*Mathf.PI/9) - shift)*scale, Mathf.Sin((7.5*Mathf.PI/9) - shift)*scale, 0), Quaternion.identity);
+  				
+  			}
   			
-  			electrons -= 18;
+  			electrons = 0;
+  			electronsToCount = 0;
     }
 }
 }  	
