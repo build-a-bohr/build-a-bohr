@@ -7,6 +7,7 @@ var BohrShell : Transform;
 var BohrShell1 : Transform;
 var BohrShell2 : Transform;
 var BohrShell3 : Transform;
+var BohrShell4 : Transform;
 var n = 1;
 var z = 1;
 var i = 1;
@@ -30,7 +31,7 @@ if(electrons > 0){
 function Create () {
 
  if(electrons > 0){
-  	var pos = Vector3(0, 0, 1);
+  	var pos = Vector3(-0.1, 0.00, 1);
   	Instantiate(BohrShell, pos, Quaternion.identity);
   	if(electrons >= 2){
   	 electronsToCount = 2;
@@ -46,8 +47,8 @@ function Create () {
     electrons -= 2;
     electronsToCount = 0;
     if(electrons > 0){
-    	pos = Vector3(0, 0, 1);
-    	scale = 2.5;
+    	scale = 1.8;
+    	pos = Vector3(-0.1, 0.00, 1);
   		Instantiate(BohrShell1, pos, Quaternion.identity);
     	if(electrons >= 8){
   	 		electronsToCount = 8;
@@ -68,12 +69,11 @@ function Create () {
   		}
   		electrons -= 8;
   		if(electrons > 0){
-    		pos = Vector3(0, 0, 1);
-    		scale = 3.5;
+    		scale = 2.5;
     		Debug.Log(electrons);
   			Instantiate(BohrShell2, pos, Quaternion.identity);
     		if(electrons >= 18){
-  	 			electronsToCount = 18;
+  	 			electronsToCount = 20;
   			}
   			if(electrons < 18){
   	 			electronsToCount = electrons;
@@ -85,13 +85,13 @@ function Create () {
   			electronsToCount -= 8;
   			shift = 0;
   			Instantiate(BohrShell3, pos, Quaternion.identity);
-  			scale = 5;
+  			scale = 3;
   			for(y = electronsToCount; y > electronsToCount - 2 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
   				Instantiate(electronSprite, Vector3(Mathf.Cos((0*Mathf.PI/4) - shift)*scale, Mathf.Sin((0*Mathf.PI/4) - shift)*scale, 0), Quaternion.identity);
   				shift += (1*Mathf.PI/4);
   			}
   			electronsToCount -= 2;
-  			scale = 3.5;
+  			scale = 2.5;
   			for(y = electronsToCount; y > electronsToCount - 9 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
   				Instantiate(electronSprite, Vector3(Mathf.Cos((0*Mathf.PI/9) - shift)*scale, Mathf.Sin((0*Mathf.PI/9) - shift)*scale, 0), Quaternion.identity);
   				shift += (2*Mathf.PI/9);

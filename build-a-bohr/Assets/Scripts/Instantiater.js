@@ -31,17 +31,17 @@ function Changer() {
 	Debug.Log("Changer()");
 
 	if(numProtons > 0 && numProtons <= 20 && numNeutrons < 25) {
-		range = 0.75;
+		range = 0.25;
 	}
 	//if(numProtons > 0 && numProtons <= 20 && numNeutrons > 25) {}
 	if(numProtons > 20 && numProtons <= 45) {
-		range = 0.75;
+		range = 0.25;
 	} 
 	if(numProtons > 45 && numProtons < 93) {
-		range = 0.85;
+		range = 0.5;
 	}
 	if(numProtons > 93 && numProtons <= 118) {
-		range = 2.00;
+		range = 1;
 	}
 	
 	Destroyer("proton");
@@ -72,7 +72,7 @@ function CreatorP() {
 	Debug.Log("Creator()"); // check if actually happening
 
 	for(var y = 0; y < numProtons; y++) {
-		var pos = Vector3(Random.Range(0.0, range), Random.Range(0.0, range), Random.Range(-1.0, 1.0));
+		var pos = Vector3(Random.Range(-range, range), Random.Range(0.0, range), Random.Range(-1.0, 1.0));
 		Instantiate(protons, pos, Quaternion.identity);
 	}
 }
@@ -81,7 +81,7 @@ function CreatorN() {
 	Debug.Log("Creator()"); // check if actually happening
 
 	for(var y = 0; y < numProtons; y++) {
-		var pos = Vector3(Random.Range(0.0, range), Random.Range(0.0, range), Random.Range(-1.0, 1.0));
+		var pos = Vector3(Random.Range(-range, range), Random.Range(-range, range), Random.Range(-1.0, 1.0));
 		Instantiate(neutrons, pos, Quaternion.identity);
 	}
 }
