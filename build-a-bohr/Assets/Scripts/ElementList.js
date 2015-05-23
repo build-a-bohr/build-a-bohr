@@ -1,5 +1,7 @@
 ﻿#pragma strict
 var protons = ChangeAtoms.protons;
+public static var vtext = NameArray[protons];
+
 var NameArray : String[] = [
 	"Hydrogen",
 	"Helium",
@@ -122,9 +124,7 @@ var NameArray : String[] = [
 	];
 
 function Update () {
- 
- var protons = ChangeAtoms.protons - 1;
- if(protons >= 0){
- 	Debug.Log(NameArray[protons]);
- }
+ var protons = ChangeAtoms.protons;
+ var vtext = NameArray[protons];
+ Debug.Log(NameArray[protons]);
 }
