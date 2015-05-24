@@ -1,8 +1,8 @@
 ﻿#pragma strict
 var protons = ChangeAtoms.protons;
-public static var vtext = NameArray[protons];
+public static var vtext = "Hydrogen";
 
-var NameArray : String[] = [
+public static var NameArray : String[] = [
 	"Hydrogen",
 	"Helium",
 	"Lithium",

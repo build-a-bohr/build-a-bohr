@@ -31,6 +31,7 @@ if(electrons > 0){
 function Create () {
 
  if(electrons > 0 && electrons <= 58){
+    Debug.Log("small");
   	var pos = Vector3(-0.1, 0.00, 1);
   	Instantiate(BohrShell, pos, Quaternion.identity);
   	if(electrons >= 2){
@@ -68,6 +69,7 @@ function Create () {
   			
   		}
   		electrons -= 8;
+  		electronsToCount -= 8;
   		if(electrons > 0){
     		scale = 2.5;
     		Debug.Log(electrons);
@@ -153,16 +155,17 @@ function Create () {
   				electronsToCount = 0;
   			}
   			
-    }
+    	}
+		}
 	}
-	}
-	if(electrons > 58 && electrons < 118){
+	else if(electrons > 58 && electrons < 118){
+	Debug.Log("big");
 	electronsToCount = electrons -58;
 	pos = Vector3(-0.1, 0.00, 1);
   	Instantiate(BohrShell, pos, Quaternion.identity);
 	Instantiate(electronSprite, Vector3((n * Mathf.Acos(0)), 0, 0), Quaternion.identity);
-  		n = n * -1;
-  	}
+  	n = n * -1;
+  	Instantiate(electronSprite, Vector3((n * Mathf.Acos(0)), 0, 0), Quaternion.identity);
   	Instantiate(BohrShell1, pos, Quaternion.identity);
   	scale = 1.9;
 	for(y = electronsToCount; y > electronsToCount - 4 && y > 0; y -= 1){
@@ -244,3 +247,4 @@ function Create () {
 	electrons = 0;
 	electronsToCount = 0;  	  	
 	}  	
+}	
