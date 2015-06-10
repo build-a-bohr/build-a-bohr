@@ -3,6 +3,7 @@ var protons = ChangeAtoms.protons;
 public static var vtext = "Hydrogen";
 
 public static var NameArray : String[] = [
+	"Nothing",
 	"Hydrogen",
 	"Helium",
 	"Lithium",
