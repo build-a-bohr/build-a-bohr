@@ -123,9 +123,17 @@ public static var NameArray : String[] = [
 	"Ununseptium",
 	"Ununoctium"
 	];
-
+function Start (){
+ var protons = ChangeAtoms.protons;
+ if(protons <= 0){
+ Application.LoadLevel(Application.loadedLevel - 1);
+ }
+}
 function Update () {
+ 
  var protons = ChangeAtoms.protons;
  var vtext = NameArray[protons];
  Debug.Log(NameArray[protons]);
+
+
 }

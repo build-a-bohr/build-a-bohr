@@ -34,6 +34,11 @@ if(electrons > 0 && electrons >= 54 ){
  }
 }
 
+function CreateBig(){
+
+
+}
+
 function CreateSmall () {
 
  if(electrons > 0){
@@ -164,7 +169,7 @@ function CreateSmall () {
   				}
   			}
 
-  				electrons -= 54;
+  				electrons -= 32;
   				electronsToCount = 0;
   			}
   		}
