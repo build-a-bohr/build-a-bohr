@@ -26,11 +26,12 @@ function Start () {
  electrons = ChangeAtoms.protons;
 }
 function Update (){
-if(electrons > 0 && electrons >= 54 ){
+if(electrons > 0 && electrons >= 56 ){
   CreateSmall();
  }
-else if(electrons > 54 && electrons >= 118 ){
+else if(electrons > 56 && electrons >= 118 ){
   electronsToRemember = electrons;
+  // if(electrons > 56 &&
   CreateSmall();
   CreateBig();
   // Uses previous spawning stuff and then spawns the new stuff.
