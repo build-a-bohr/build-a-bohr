@@ -2,7 +2,7 @@
 
 // global vars used to tell the instantiater how many particles to create
 public static var protons = 0.00;
-public static var neutrons = 0.00;
+public static var neutrons = 0.00s;
 
 function Start ()	{
 	protons = 1.0;

@@ -16,6 +16,8 @@ var n = 1;
 var z = 1;
 var i = 1;
 var electronsToCount = 0;
+var electronsToRemember = 0;
+var electronsToCountTo = 0;
 var shift : float = 0;
 var scale : float = 0;
 
@@ -27,9 +29,11 @@ function Update (){
 if(electrons > 0 && electrons >= 54 ){
   CreateSmall();
  }
- else if(electrons > 54 && electrons >= 118 ){
+else if(electrons > 54 && electrons >= 118 ){
+  electronsToRemember = electrons;
   CreateSmall();
   CreateBig();
+  // Uses previous spawning stuff and then spawns the new stuff.
   
  }
 }
@@ -40,7 +44,7 @@ function CreateBig(){
 }
 
 function CreateSmall () {
-
+// Deals with spawning elements up to Barium (56), uses weird coordinates however it works for now (might eventually rewrite)
  if(electrons > 0){
   	var pos = Vector3(-0.1, -0.12, 1);
   	Instantiate(BohrShell, pos, Quaternion.identity);
