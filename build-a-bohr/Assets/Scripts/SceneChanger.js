@@ -1,4 +1,13 @@
-﻿#pragma strict
+﻿/**
+ * @file allows scene to be changed
+ * @license BSD-3-Clause
+ * @author Aaron Raimist <aaronraimist@protonmail.ch>
+ * @author Eli Verbrugge <eli.verbrugge@gmail.com>
+ *
+ * @todo combine TitleScript into SceneChanger so only this one script is needed
+ */
+ 
+#pragma strict
 
 public var clickToLoad : boolean = false;
 public var button : boolean = false;

@@ -22,8 +22,8 @@ var shift : float = 0;
 var scale : float = 0;
 
 
-function Start () {
- electrons = ChangeAtoms.protons;
+function Start() {
+	electrons = ChangeAtoms.protons;
 }
 function Update (){
 if(electrons > 0 && electrons >= 56 ){
