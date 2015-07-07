@@ -47,11 +47,20 @@ else{
    CreateSmall();
    electrons = electronsToRemember;
    Instantiate(electronSprite, Vector3(Mathf.Cos((4*Mathf.PI/16))*3.5, Mathf.Sin((4*Mathf.PI/16))*3.5, 0), Quaternion.identity);
+   electrons -= 1;
    scale = 3.0;
-   for(var y = electrons; y > electrons - 1 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
-  		Instantiate(electronSprite, Vector3(Mathf.Cos((2*Mathf.PI/16) - shift)*scale, Mathf.Sin((0*Mathf.PI/9) - shift)*scale, 0), Quaternion.identity);
-  		shift += (4*Mathf.PI/16);
+   shift = 0;
+   for(var y = electrons; y > electrons - 2 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
+  		Instantiate(electronSprite, Vector3(Mathf.Cos((3*Mathf.PI/16) - shift)*scale, Mathf.Sin((3*Mathf.PI/16) - shift)*scale, 0), Quaternion.identity);
+  		shift += (1*Mathf.PI/16);
    }
+   electrons -= 2;
+   for(y = electrons; y > electrons - 2 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
+  		Instantiate(neutronSprite, Vector3(Mathf.Cos((7*Mathf.PI/16) - shift)*scale, Mathf.Sin((7*Mathf.PI/16) - shift)*scale, 0), Quaternion.identity);
+  		shift += (1*Mathf.PI/16);
+   }
+   electrons -= 2;
+   
   }
  
   
@@ -170,10 +179,10 @@ function CreateSmall () {
   					shift += (2*Mathf.PI/9);
   				}
   				electronsToCount -= 9;
-  				for(y = electronsToCount; y > electronsToCount - 1 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
-  					Instantiate(electronSprite, Vector3(Mathf.Cos((10.5*Mathf.PI/9) - shift)*scale, Mathf.Sin((12*Mathf.PI/9) - shift)*scale, 0), Quaternion.identity);
+  				//for(y = electronsToCount; y > electronsToCount - 1 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
+  					//Instantiate(electronSprite, Vector3(Mathf.Cos((10.5*Mathf.PI/9) - shift)*scale, Mathf.Sin((12*Mathf.PI/9) - shift)*scale, 0), Quaternion.identity);
   				
-  				}
+  				//}
   				scale = 3.5;
   				shift = 0;
   				for(y = electronsToCount; y > electronsToCount - 4 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
