@@ -133,7 +133,6 @@ function Update () {
  
  var protons = ChangeAtoms.protons;
  var vtext = NameArray[protons];
- Debug.Log(NameArray[protons]);
 
 
 }

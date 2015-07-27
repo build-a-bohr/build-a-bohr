@@ -38,10 +38,10 @@ function Changer() {
 		range = 0.25;
 	} 
 	if(numProtons > 45 && numProtons < 93) {
-		range = 0.4;
+		range = 0.3;
 	}
 	if(numProtons > 93 && numProtons <= 118) {
-		range = 0.6;
+		range = 0.3;
 	}
 	
 	Destroyer("proton");
