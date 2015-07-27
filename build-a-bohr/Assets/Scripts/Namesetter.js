@@ -9,5 +9,5 @@ function Start () {
 function Update () {
     protons = ChangeAtoms.protons;
     Nname = ElementList.NameArray[protons];
-	GetComponent.<UnityEngine.UI.Text>().text = Nname;
+	GetComponent.<UnityEngine.UI.Text>().text = Nname + "\n" + "Element #: " + protons; 
 }
