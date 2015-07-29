@@ -1,0 +1,63 @@
+Initialize engine version: 5.1.1f1 (2046fc06d4d8)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon HD 8550G (ID=0x990d)
+    Vendor:   ATI
+    VRAM:     736 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.131 seconds
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\System.dll (this message is harmless)
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 15.453174 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 242.
+Total: 0.709345 ms (FindLiveObjects: 0.028823 ms CreateObjectMapping: 0.042013 ms MarkObjects: 0.610173 ms  DeleteObjects: 0.026869 ms)
+
+Platform assembly: C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\UnityScript.Lang.dll (this message is harmless)
+Empty string passed to parseInt in function NumberOfNeutrons()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Empty string passed to parseInt in function NumberOfNeutrons()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.964907 ms
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 213.
+Total: 0.449935 ms (FindLiveObjects: 0.034685 ms CreateObjectMapping: 0.032242 ms MarkObjects: 0.351741 ms  DeleteObjects: 0.029311 ms)
+
+Platform assembly: C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\Boo.Lang.dll (this message is harmless)
+numProtons: 77
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Changer()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Creator()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Creator()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
