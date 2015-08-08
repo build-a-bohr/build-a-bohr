@@ -20,11 +20,12 @@ function Update() {
 		Changer();
 	} 
 	
-	if(numNeutrons != prevNumNeutrons && numNeutrons != 0) {
+	if(numNeutrons != prevNumNeutrons && numNeutrons != 0 && numProtons <= TOTAL_NUM_ELEMENTS) {
 		Changer();
-	} else if(numProtons > TOTAL_NUM_ELEMENTS && numNeutrons > TOTAL_NUM_ELEMENTS ) {
-		Destroyer("proton");
-	}
+	} 
+	//else if(numProtons > TOTAL_NUM_ELEMENTS && numNeutrons > TOTAL_NUM_ELEMENTS ) {
+		//Destroyer("proton");
+	//}
 }
 
 function Changer() {
@@ -58,7 +59,7 @@ function Changer() {
 		CreatorP();
 		prevNumProtons = ChangeAtoms.protons;
 	}
-	if(numNeutrons > 0) {			
+	if(numNeutrons > 0 && numProtons <= TOTAL_NUM_ELEMENTS) {			
 		CreatorN();
 		prevNumNeutrons = ChangeAtoms.neutrons;
 		
