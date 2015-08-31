@@ -4,10 +4,15 @@
 public static var protons = 0.00;
 public static var neutrons = 0.00;
 
+
 function Start ()	{
 	protons = 0.0;
 	neutrons = 0.0;
 
+}
+
+function Update () {
+ 
 }
 
 // Convert user input to a number
