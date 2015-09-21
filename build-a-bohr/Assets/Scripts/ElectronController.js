@@ -30,6 +30,7 @@ function Start () {
 function Update (){
 if(electrons > 0 && electrons <= 56 ){
   CreateSmall();
+  
  }
 else{
   	if(electrons == 57){
@@ -220,8 +221,12 @@ function CreateSmall () {
   				Instantiate(electronSprite, Vector3(Mathf.Cos((1*Mathf.PI/9) - shift)*scale, Mathf.Sin((1*Mathf.PI/9) - shift)*scale, 0), Quaternion.identity);
   				shift += (2*Mathf.PI/9);
   			}
+  			
   			electronsToCount -= 8;
+  			electrons -= 8;
   			shift = 0;
+  			if(electronsToCount > 0){
+  			Debug.Log("passed the fail check");
   			Instantiate(BohrShell3, pos, Quaternion.identity);
   			scale = 3;
   			for(y = electronsToCount; y > electronsToCount - 2 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
@@ -328,7 +333,7 @@ function CreateSmall () {
   				
   			}
   		}
-  			
+  		}	
     	}
 		}
 	}

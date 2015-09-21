@@ -4,12 +4,16 @@ var Rutherford : GameObject;
 var Bohr : GameObject;
 var Curie : GameObject;
 var Chadwick : GameObject;
+var Thomson : GameObject;
 var Instantiater : GameObject;
+var ElectronController : GameObject;
 var MessageBubble : GameObject;
+var protonPrefab : GameObject;
 //declares all the variables referencing UI components
 var MessageText : UnityEngine.UI.Text;
 var AtomicNumber : UnityEngine.UI.Text;
 var MassNumber : UnityEngine.UI.Text;
+var RestartButton : UnityEngine.UI.Button;
 var ElementSymbol : UnityEngine.UI.Text;
 var protonInput : UnityEngine.UI.InputField;
 var neutronInput : UnityEngine.UI.InputField;
@@ -17,12 +21,15 @@ var neutronInput : UnityEngine.UI.InputField;
 var protons = ChangeAtoms.protons;
 var neutrons = ChangeAtoms.neutrons;
 var messageVal = 1;
-public static var increment = 1;
+var increment = 1;
+var stage = 1;
 //creates a message variable used to display text relating to if the created atom is radioactive or not
 var RadioActiveMessage = "";
 //creates all the arrays neccessary
 var ProtonArray : GameObject[];
 var NeutronArray : GameObject[];
+var ElectronArray : GameObject[];
+var ShellArray : GameObject[];
 private var MessageArr = [
 
 	"Good day! My name is Ernest Rutherford, and in 1920, I discovered a positively charged subatomic particle which I called a proton.",
@@ -196,7 +203,10 @@ function Update() {
          	   Chadwick.gameObject.SetActive(true);		
 	}
 	else if(messageVal == 10){
+				MessageText.gameObject.SetActive(true);
+	 		   	MessageBubble.gameObject.SetActive(true);
 	 			neutronInput.gameObject.SetActive(true);
+	 			Chadwick.gameObject.SetActive(true);	
 	 			
 	}
 	else if(messageVal == 11){
@@ -218,13 +228,77 @@ function Update() {
 	 			
 	}
 	else if(messageVal == 14){
-	 		   Chadwick.gameObject.SetActive(true);
+	 		   Chadwick.gameObject.SetActive(false);
 	 		   Curie.gameObject.SetActive(true);				
 	 			
 	}
+	else if(messageVal == 17){
+		if(RadioActiveMessage == "Seems like this combination is stable, so we are good to go!"){	
+	 		  //nothing!
+		}
+	 	else{
+	 		 messageVal = 22;
+	 		 UpdateArray();
+	 		 MessageText.text = MessageArr[messageVal];
+	 	}
+	}
+	else if(messageVal == 18){
+	ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
+     		  for(i = 0 ; i < ProtonArray.length ; i ++){
+         			if(ProtonArray[i].transform.localScale.x > 0.03 && ProtonArray[i].transform.localScale.y > 0.03 ){
+         				ProtonArray[i].transform.localScale = ProtonArray[i].transform.localScale - new Vector3(0.02, 0.02, 0) * Time.deltaTime;
+         			}		
+         	  }
+    NeutronArray =  GameObject.FindGameObjectsWithTag ("neutron");
+     		  for(i = 0 ; i < NeutronArray.length ; i ++){
+     		  	if(NeutronArray[i].transform.localScale.x > 0.03 && NeutronArray[i].transform.localScale.y > 0.03 ){
+         			NeutronArray[i].transform.localScale = NeutronArray[i].transform.localScale - new Vector3(0.02, 0.02, 0) * Time.deltaTime;
+         		}	
+         	  }
+	}
+	else if(messageVal == 19){
+			   Curie.gameObject.SetActive(false);
+	 		   Thomson.gameObject.SetActive(true);					
+	}
+	else if(messageVal == 20){
+		Bohr.gameObject.SetActive(true);		
+	}
+	else if(messageVal == 21){
+		ElectronController.gameObject.SetActive(true);		
+	}
+	else if(messageVal == 22){
+		ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
+     		  for(i = 0 ; i < ProtonArray.length ; i ++){
+         			Destroy(ProtonArray[i]);	
+         	  }
+        NeutronArray =  GameObject.FindGameObjectsWithTag ("neutron");
+     		  for(i = 0 ; i < NeutronArray.length ; i ++){
+         			Destroy(NeutronArray[i]);	
+         	  }
+        ElectronArray =  GameObject.FindGameObjectsWithTag ("electron");
+     		  for(i = 0 ; i < ElectronArray.length ; i ++){
+         			Destroy(ElectronArray[i]);	
+         	  }
+        ShellArray =  GameObject.FindGameObjectsWithTag ("shell");
+     		  for(i = 0 ; i < ShellArray.length ; i ++){
+         			Destroy(ShellArray[i]);	
+         	  }
+		Curie.gameObject.SetActive(false);
+		Bohr.gameObject.SetActive(false);
+		RestartButton.gameObject.SetActive(true);
+			
+	 			
+	}
+	//else if(messageVal == 16){
+				//for(var y = 1; y > 0; y--){
+					//var clone = Instantiate(protonPrefab, transform.position, transform.rotation);
+					//clone.transform.Translate(Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0) * 1.0 * Time.deltaTime);
+				//}
+	//}
 	//Debug.Log(MessageArr[messageVal]);
 	if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) {	
 	 	//checks if the message is one requiring input, otherwise it will continue to the next message
+	 	
 	 	if(messageVal == 3){
 	 	    //make sure that actual input has occured
 	 		if(protons > 0){
@@ -249,9 +323,25 @@ function Update() {
 
 function NewMessage() {
     //Increases the value of the array, then updates it, before finally displauing the text to the user
-    messageVal+= increment;
-    UpdateArray ();
-    MessageText.text = MessageArr[messageVal];
+    if(Application.loadedLevel == 2){
+    	if(messageVal == 5){
+    		increment = 5;
+    	}
+    	else if(messageVal == 11){
+    		increment = 3;
+   	 	}
+    	else if(messageVal == 14){
+    		increment = 1;
+    	}
+    	else{
+    		increment = 2;
+    	}
+   	 	
+   	 	
+   	}
+   	messageVal+= increment;
+   	UpdateArray ();
+   	MessageText.text = MessageArr[messageVal];
     
 }
 
@@ -261,7 +351,7 @@ MessageArr = [
 
 	"Good day! My name is Ernest Rutherford, and in 1920, I discovered a positively charged subatomic particle which I called a proton.",
 	"Okay! So what do you want to element do you want to build now?",
-	"The number of protons in an atom  is what determines what the element is",
+	"The number of protons in an atom is what determines what the element is.",
 	"So how many protons (1-118) do you want in this atom you are building?",
 	 protons + " proton(s); good that means you are making an atom of " + NameArray[protons][0] + ". Check out the symbol (" + NameArray[protons][1] + ")" + " and the atomic number (" + protons + ") at the top", 
 	"",
@@ -269,14 +359,19 @@ MessageArr = [
 	"Neutrons and protons are held together by strong forces into a tight bundle known as an atomic 'nucleus'.",
 	"But unless the positively charged protons have enough neutrons mixed in, they will repel each other too much and the nucleus will be too unstable and it will fly apart...",
 	"If there are too many neutrons, that will also make the nucleus unstable!",
-	"So, how many neutrons (0-200) do you want in your atom?",
+	"So, how many neutrons (0-" +  (protons + 10) + ") do you want in your atom?",
 	neutrons + " neutron(s); good that means that you are making an atom of " + NameArray[protons][0] + "-" + (protons + neutrons),
 	"",
-	"Check out the atomic mass number (" + (protons + neutrons) + ")in the top right, above the atomic number. This is the number of protons + neutrons",
+	"Check out the atomic mass number (" + (protons + neutrons) + ") in the top right, above the atomic number. This is the number of protons + neutrons",
 	"Hello, I am Marie Curie, and I did much of the pioneering work on nuclear stability and the theory of radioactivity.",
 	"Now let's see if the proton - neutron combination you have chosen is stable...",
-	 RadioActiveMessage
-	
-	
+	 RadioActiveMessage,
+	"The nucleus is very, very small, in fact if the nucleus was a football the atom would be the size of the football stadium!",
+	"Now let's shrink it down a bit so we can add the final ingredients",
+	"Good day. My name is J. J Thompson, and in 1887, I discovered the electron.",
+	"But it was me, Niels Bohr (the founder of build a bohr workshop) who figured out that electrons exist around the nucleus in quantum energy levels.",
+	"Now, let's have a look at the bohr diagram for this element!",
+	"Do you want to retry?",
+	""	
 ];
 }
