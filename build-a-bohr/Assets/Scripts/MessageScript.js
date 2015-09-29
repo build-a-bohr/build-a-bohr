@@ -30,6 +30,7 @@ var ProtonArray : GameObject[];
 var NeutronArray : GameObject[];
 var ElectronArray : GameObject[];
 var ShellArray : GameObject[];
+var loopVar = true;
 private var MessageArr = [
 
 	"Good day! My name is Ernest Rutherford, and in 1920, I discovered a positively charged subatomic particle which I called a proton.",
@@ -186,6 +187,11 @@ function Update() {
 	 		    ElementSymbol.text = NameArray[protons][1].ToString();
 	}
 	else if(messageVal == 5){
+			   protonInput.gameObject.SetActive(false);
+	 		   AtomicNumber.gameObject.SetActive(true);
+	 		   ElementSymbol.gameObject.SetActive(true);
+	 		   AtomicNumber.text = protons.ToString();
+	 		   ElementSymbol.text = NameArray[protons][1].ToString();
 	           MessageText.gameObject.SetActive(false);
 	 		   MessageBubble.gameObject.SetActive(false);
 	 		   Instantiater.gameObject.SetActive(true);
@@ -203,22 +209,33 @@ function Update() {
          	   Chadwick.gameObject.SetActive(true);		
 	}
 	else if(messageVal == 10){
+				Instantiater.gameObject.SetActive(false);
+	 		   	ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
+     		   	for(i = 0 ; i < ProtonArray.length ; i ++){
+         			Destroy(ProtonArray[i]);	
+         	   	}
 				MessageText.gameObject.SetActive(true);
 	 		   	MessageBubble.gameObject.SetActive(true);
 	 			neutronInput.gameObject.SetActive(true);
+	 			Rutherford.gameObject.SetActive(false);
 	 			Chadwick.gameObject.SetActive(true);	
 	 			
 	}
 	else if(messageVal == 11){
+				MessageText.gameObject.SetActive(true);
+	 		   	MessageBubble.gameObject.SetActive(true);
 	 			neutronInput.gameObject.SetActive(false);
 	 			MassNumber.gameObject.SetActive(true);
 	 			MassNumber.text = (protons + neutrons).ToString();
 	 			
 	}
 	else if(messageVal == 12){
+			   MassNumber.gameObject.SetActive(true);
+	 		   MassNumber.text = (protons + neutrons).ToString();
 	 		   MessageText.gameObject.SetActive(false);
 	 		   MessageBubble.gameObject.SetActive(false);
 	 		   Instantiater.gameObject.SetActive(true);
+	 		   neutronInput.gameObject.SetActive(false);
 	 			
 	}
 	else if(messageVal == 13){
@@ -232,6 +249,14 @@ function Update() {
 	 		   Curie.gameObject.SetActive(true);				
 	 			
 	}
+	else if(messageVal == 16){
+		Debug.Log("got to 16");
+		if(RadioActiveMessage == "This combination is too unstable to even exist for a moment!"){
+				Debug.Log("got to scatter!");
+	 		 	Scatter();
+	 		 	
+	 	}
+	}
 	else if(messageVal == 17){
 		if(RadioActiveMessage == "Seems like this combination is stable, so we are good to go!"){	
 	 		  //nothing!
@@ -243,18 +268,18 @@ function Update() {
 	 	}
 	}
 	else if(messageVal == 18){
-	ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
-     		  for(i = 0 ; i < ProtonArray.length ; i ++){
+				ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
+     			for(i = 0 ; i < ProtonArray.length ; i ++){
          			if(ProtonArray[i].transform.localScale.x > 0.03 && ProtonArray[i].transform.localScale.y > 0.03 ){
          				ProtonArray[i].transform.localScale = ProtonArray[i].transform.localScale - new Vector3(0.02, 0.02, 0) * Time.deltaTime;
          			}		
-         	  }
-    NeutronArray =  GameObject.FindGameObjectsWithTag ("neutron");
-     		  for(i = 0 ; i < NeutronArray.length ; i ++){
-     		  	if(NeutronArray[i].transform.localScale.x > 0.03 && NeutronArray[i].transform.localScale.y > 0.03 ){
-         			NeutronArray[i].transform.localScale = NeutronArray[i].transform.localScale - new Vector3(0.02, 0.02, 0) * Time.deltaTime;
-         		}	
-         	  }
+         	  	}
+    			NeutronArray =  GameObject.FindGameObjectsWithTag ("neutron");
+     		  	for(i = 0 ; i < NeutronArray.length ; i ++){
+     		  		if(NeutronArray[i].transform.localScale.x > 0.03 && NeutronArray[i].transform.localScale.y > 0.03 ){
+         				NeutronArray[i].transform.localScale = NeutronArray[i].transform.localScale - new Vector3(0.02, 0.02, 0) * Time.deltaTime;
+         			}	
+         	  	}
 	}
 	else if(messageVal == 19){
 			   Curie.gameObject.SetActive(false);
@@ -289,13 +314,6 @@ function Update() {
 			
 	 			
 	}
-	//else if(messageVal == 16){
-				//for(var y = 1; y > 0; y--){
-					//var clone = Instantiate(protonPrefab, transform.position, transform.rotation);
-					//clone.transform.Translate(Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0) * 1.0 * Time.deltaTime);
-				//}
-	//}
-	//Debug.Log(MessageArr[messageVal]);
 	if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) {	
 	 	//checks if the message is one requiring input, otherwise it will continue to the next message
 	 	
@@ -327,9 +345,6 @@ function NewMessage() {
     	if(messageVal == 5){
     		increment = 5;
     	}
-    	else if(messageVal == 11){
-    		increment = 3;
-   	 	}
     	else if(messageVal == 14){
     		increment = 1;
     	}
@@ -374,4 +389,30 @@ MessageArr = [
 	"Do you want to retry?",
 	""	
 ];
+}
+
+function Scatter (){
+
+	ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
+    for(var i = 0 ; i < ProtonArray.length ; i ++){
+    	var randomDirection : Vector3 = new Vector3(Random.Range(-359, 359),Random.Range(-359, 359),Random.Range(-359, 359));
+		transform.Rotate(randomDirection);
+		for(var y = 10; y > 0; y--){    
+			ProtonArray[i].transform.position += transform.forward * 2 *  Time.deltaTime;
+		}			
+    }
+    NeutronArray =  GameObject.FindGameObjectsWithTag ("neutron");
+    for(i = 0 ; i < NeutronArray.length ; i ++){
+   		randomDirection = new Vector3(Random.Range(-359, 359),Random.Range(-359, 359),Random.Range(-359, 359)); 
+		transform.Rotate(randomDirection);
+		for(y = 10; y > 0; y--){    
+			NeutronArray[i].transform.position += transform.forward * 2 *  Time.deltaTime;
+		}	
+    }
+    yield WaitForSeconds (1);
+	messageVal = 17;
+	
+    
+    
+
 }

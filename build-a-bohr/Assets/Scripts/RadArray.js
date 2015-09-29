@@ -21,47 +21,53 @@ public var RadioactiveArray = [
     [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 6, 7, 7, 7, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
     [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 6, 7, 7, 7, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
     [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 7, 7, 7, 7, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-    [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 7, 7, 7, 7, 7, 7, 7, 7, 1, 2, 3, 3, 3, 3, 3, 2, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+    [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 7, 7, 7, 7, 7, 7, 7, 7, 1, 2, 3, 3, 3, 3, 3, 2, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+    [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 7, 2, 7, 7, 7, 7, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+    [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 7, 7, 7, 7, 7, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 ];
 function Start () {
-	var y = 299;
-	for(var i = 0; i < y; i++){
-		longstring += ' 2,';
-	}
+	//var y = 299;
+	//for(var i = 0; i < y; i++){
+	//	longstring += ' 2,';
+	//}
 }
 
 function Update () {
 	protons = ChangeAtoms.protons;
 	neutrons = ChangeAtoms.neutrons;
 	massnumber = protons + neutrons;
-	if(RadioactiveArray[protons][massnumber] == 1){
-		RadioActiveMessage = "Seems like this combination is stable, so we are good to go!";
+	if(protons <= RadioactiveArray.length && protons > 0){
+		if(RadioactiveArray[protons][massnumber] == 1){
+			RadioActiveMessage = "Seems like this combination is stable, so we are good to go!";
+		}
+		else if(RadioactiveArray[protons][massnumber] == 2) 
+		{
+			RadioActiveMessage = "This combination is too unstable to even exist for a moment!";
+		}
+		else if(RadioactiveArray[protons][massnumber] == 3) 
+		{
+			RadioActiveMessage = "This combination will undergo Beta decay!";
+		}
+		else if(RadioactiveArray[protons][massnumber] == 4) 
+		{
+			RadioActiveMessage = "This combination will undergo Alpha decay!";
+		}
+		else if(RadioactiveArray[protons][massnumber] == 5) 
+		{
+			RadioActiveMessage = "This combination will undergo Neutron emission!";
+		}
+		else if(RadioactiveArray[protons][massnumber] == 6) 
+		{
+			RadioActiveMessage = "This combination will undergo Proton emission!";
+		}
+		else if(RadioactiveArray[protons][massnumber] == 7) 
+		{
+			RadioActiveMessage = "This combination will undergo Electron capture!";
+		}
 	}
-	else if(RadioactiveArray[protons][massnumber] == 2) 
-	{
-		RadioActiveMessage = "This combination is too unstable to even exist for a moment!";
-	}
-	else if(RadioactiveArray[protons][massnumber] == 3) 
-	{
-		RadioActiveMessage = "This combination will undergo Beta decay!";
-	}
-	else if(RadioactiveArray[protons][massnumber] == 4) 
-	{
-		RadioActiveMessage = "This combination will undergo Alpha decay!";
-	}
-	else if(RadioactiveArray[protons][massnumber] == 5) 
-	{
-		RadioActiveMessage = "This combination will undergo Neutron emission!";
-	}
-	else if(RadioactiveArray[protons][massnumber] == 6) 
-	{
-		RadioActiveMessage = "This combination will undergo Proton emission!";
-	}
-	else if(RadioactiveArray[protons][massnumber] == 7) 
-	{
-		RadioActiveMessage = "This combination will undergo Electron capture!";
-	}
-	
+	else{
+	 RadioActiveMessage = "Not supported at this point!";
+	}	
 	
 	
 	
