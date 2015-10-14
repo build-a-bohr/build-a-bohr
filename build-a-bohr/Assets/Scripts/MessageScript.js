@@ -160,105 +160,154 @@ var NameArray = [ //creates an array with both the names and symbols, radioactiv
 	["Ununoctium", "Uuo"]
 ];
 
-function Start() {
+function Start() 
+	{
  //Sets the text to whatever is neccessary depedning on if the user starts the scene or is simply restarting the process
- if(increment == 1){
+ if(increment == 1)
+ {
   MessageText.text = MessageArr[0];
  }
- else if(increment == 2){
+ else if(increment == 2)
+ {
   MessageText.text = MessageArr[1];
  }
  
 }
 
 function Update() {
-	//used to transform the scene to make it fit the text and/or required inputs/display elements
+	//Used to transform the scene to make it fit the text and/or required inputs/display elements
+	//Eventually will move this to a seperate UI script, because the MessageScript really should not be doing this
 	protons = ChangeAtoms.protons;
 	neutrons = ChangeAtoms.neutrons;
 	RadioActiveMessage = RadArray.RadioActiveMessage;
-	if(messageVal == 3){
+	if(messageVal == 12 || messageVal == 5)
+	{
+		MessageText.gameObject.SetActive(false);
+	 	MessageBubble.gameObject.SetActive(false);
+	}
+	else
+	{
+		MessageText.gameObject.SetActive(true);
+	 	MessageBubble.gameObject.SetActive(true);
+	}
+	if(messageVal >= 0 && messageVal < 6)
+	{
+		Rutherford.gameObject.SetActive(true);
+		Chadwick.gameObject.SetActive(false);
+		Thomson.gameObject.SetActive(false);
+		Bohr.gameObject.SetActive(false);
+		Curie.gameObject.SetActive(false);				
+		
+	}
+	else if(messageVal >= 6 && messageVal < 14)
+	{
+		Rutherford.gameObject.SetActive(false);
+		Chadwick.gameObject.SetActive(true);
+		Thomson.gameObject.SetActive(false);
+		Bohr.gameObject.SetActive(false);
+		Curie.gameObject.SetActive(false);
+	}
+	else if(messageVal >= 14 && messageVal < 19)
+	{
+		Rutherford.gameObject.SetActive(false);
+		Chadwick.gameObject.SetActive(false);
+		Thomson.gameObject.SetActive(false);
+		Bohr.gameObject.SetActive(false);
+		Curie.gameObject.SetActive(true);
+	
+	}
+	else if(messageVal == 19)
+	{
+		Rutherford.gameObject.SetActive(false);
+		Chadwick.gameObject.SetActive(false);
+		Thomson.gameObject.SetActive(true);
+		Bohr.gameObject.SetActive(false);
+		Curie.gameObject.SetActive(false);
+	
+	}
+	else if(messageVal >= 20 && messageVal < 23)
+	{
+		Rutherford.gameObject.SetActive(false);
+		Chadwick.gameObject.SetActive(false);
+		Thomson.gameObject.SetActive(false);
+		Bohr.gameObject.SetActive(true);
+		Curie.gameObject.SetActive(false);
+	
+	}
+		
+	if(messageVal == 3)
+	{
 	 			protonInput.gameObject.SetActive(true);
 	}
-	else if(messageVal == 4){
+	else if(messageVal == 4)
+	{
 	 			protonInput.gameObject.SetActive(false);
 	 			AtomicNumber.gameObject.SetActive(true);
 	 		    ElementSymbol.gameObject.SetActive(true);
 	 			AtomicNumber.text = protons.ToString();
 	 		    ElementSymbol.text = NameArray[protons][1].ToString();
 	}
-	else if(messageVal == 5){
+	else if(messageVal == 5)
+	{
 			   protonInput.gameObject.SetActive(false);
 	 		   AtomicNumber.gameObject.SetActive(true);
 	 		   ElementSymbol.gameObject.SetActive(true);
 	 		   AtomicNumber.text = protons.ToString();
 	 		   ElementSymbol.text = NameArray[protons][1].ToString();
-	           MessageText.gameObject.SetActive(false);
-	 		   MessageBubble.gameObject.SetActive(false);
 	 		   Instantiater.gameObject.SetActive(true);
 	 			
 	}
-	else if(messageVal == 6){
-	 		   MessageText.gameObject.SetActive(true);
-	 		   MessageBubble.gameObject.SetActive(true);
+	else if(messageVal == 6)
+	{
 	 		   Instantiater.gameObject.SetActive(false);
 	 		   ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
      		   for(var i = 0 ; i < ProtonArray.length ; i ++){
          			Destroy(ProtonArray[i]);	
          	   }
-         	   Rutherford.gameObject.SetActive(false);
-         	   Chadwick.gameObject.SetActive(true);		
+         	   		
 	}
-	else if(messageVal == 10){
+	else if(messageVal == 10)
+	{
 				Instantiater.gameObject.SetActive(false);
 	 		   	ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
      		   	for(i = 0 ; i < ProtonArray.length ; i ++){
          			Destroy(ProtonArray[i]);	
          	   	}
-				MessageText.gameObject.SetActive(true);
-	 		   	MessageBubble.gameObject.SetActive(true);
 	 			neutronInput.gameObject.SetActive(true);
-	 			Rutherford.gameObject.SetActive(false);
-	 			Chadwick.gameObject.SetActive(true);	
+	 			
 	 			
 	}
-	else if(messageVal == 11){
-				MessageText.gameObject.SetActive(true);
-	 		   	MessageBubble.gameObject.SetActive(true);
+	else if(messageVal == 11)
+	{
 	 			neutronInput.gameObject.SetActive(false);
 	 			MassNumber.gameObject.SetActive(true);
 	 			MassNumber.text = (protons + neutrons).ToString();
 	 			
 	}
-	else if(messageVal == 12){
+	else if(messageVal == 12)
+	{
 			   MassNumber.gameObject.SetActive(true);
 	 		   MassNumber.text = (protons + neutrons).ToString();
-	 		   MessageText.gameObject.SetActive(false);
-	 		   MessageBubble.gameObject.SetActive(false);
 	 		   Instantiater.gameObject.SetActive(true);
 	 		   neutronInput.gameObject.SetActive(false);
 	 			
 	}
-	else if(messageVal == 13){
-	 		   MessageText.gameObject.SetActive(true);
-	 		   MessageBubble.gameObject.SetActive(true);
+	else if(messageVal == 13)
+	{
 	 		   Instantiater.gameObject.SetActive(false);
 	 			
 	}
-	else if(messageVal == 14){
-	 		   Chadwick.gameObject.SetActive(false);
-	 		   Curie.gameObject.SetActive(true);				
-	 			
-	}
-	else if(messageVal == 16){
-		Debug.Log("got to 16");
-		if(RadioActiveMessage == "This combination is too unstable to even exist for a moment!"){
-				Debug.Log("got to scatter!");
+	else if(messageVal == 16)
+	{
+		
+		if(RadioActiveMessage == "This combination is too unstable to even exist for a moment!")
+		{
 	 		 	Scatter();
 	 		 	
 	 	}
 	}
 	else if(messageVal == 17){
-		if(RadioActiveMessage == "Seems like this combination is stable, so we are good to go!"){	
+		if(RadioActiveMessage == "Seems like this combination is stable, so we are good to go!" || RadioActiveMessage == "Not supported at this point!"){	
 	 		  //nothing!
 		}
 	 	else{
@@ -268,6 +317,7 @@ function Update() {
 	 	}
 	}
 	else if(messageVal == 18){
+				//Shrinks both the Neutrons and Protons, so that we can demonstrate the bohr diagrams without scaling issues
 				ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
      			for(i = 0 ; i < ProtonArray.length ; i ++){
          			if(ProtonArray[i].transform.localScale.x > 0.03 && ProtonArray[i].transform.localScale.y > 0.03 ){
@@ -280,10 +330,6 @@ function Update() {
          				NeutronArray[i].transform.localScale = NeutronArray[i].transform.localScale - new Vector3(0.02, 0.02, 0) * Time.deltaTime;
          			}	
          	  	}
-	}
-	else if(messageVal == 19){
-			   Curie.gameObject.SetActive(false);
-	 		   Thomson.gameObject.SetActive(true);					
 	}
 	else if(messageVal == 20){
 		Bohr.gameObject.SetActive(true);		
@@ -308,36 +354,13 @@ function Update() {
      		  for(i = 0 ; i < ShellArray.length ; i ++){
          			Destroy(ShellArray[i]);	
          	  }
-		Curie.gameObject.SetActive(false);
-		Bohr.gameObject.SetActive(false);
 		RestartButton.gameObject.SetActive(true);
 			
 	 			
 	}
-	if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) {	
-	 	//checks if the message is one requiring input, otherwise it will continue to the next message
-	 	
-	 	if(messageVal == 3){
-	 	    //make sure that actual input has occured
-	 		if(protons > 0){
-	 		 	NewMessage();
-	 		}
-		}
-		else if(messageVal == 10){
-		    //make sure that acutal input has occured
-			if(neutrons > 0){
-			 NewMessage();
-			}
-		}
-	 	else{
-	 	   //if no input is required, just display the next message
-	 		NewMessage();
-	 		
-	 		
-	 	}	
-	}
-	
 }
+	
+
 
 function NewMessage() {
     //Increases the value of the array, then updates it, before finally displauing the text to the user
@@ -415,4 +438,53 @@ function Scatter (){
     
     
 
+}
+function DecreaseMessageVal (){
+	if(Application.loadedLevel == 2){
+    	if(messageVal == 5){
+    		increment = 5;
+    	}
+    	else if(messageVal == 14){
+    		increment = 1;
+    	}
+    	else{
+    		increment = 2;
+    	}
+   	 	
+   	 	
+   	}
+   	if(Application.loadedLevel == 1){
+   	 	if(messageVal == 2){
+   	 		increment = 2;
+   	 	}
+   	}
+	messageVal -= increment;
+	UpdateArray ();
+   	MessageText.text = MessageArr[messageVal];
+
+}
+function IncreaseMessageVal (){
+	 if(Application.loadedLevel == 2){
+    	if(messageVal == 5){
+    		increment = 5;
+    	}
+    	else if(messageVal == 14 || messageVal == 15){
+    		increment = 1;
+    		Debug.Log("Hit the radioactive part!");
+    	}
+    	else if(messageVal == 17)
+    	{
+    		increment = 3;
+    	}
+    	else{
+    		increment = 2;
+    	}
+   	 	
+   	 	
+   	 }
+   	 
+	 messageVal += increment;
+	 UpdateArray ();
+   	 MessageText.text = MessageArr[messageVal];
+	
 }

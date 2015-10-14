@@ -16,68 +16,18 @@ Platform assembly: C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-
 Loading C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
 Loading C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-- Completed reload, in  0.161 seconds
-desktop: 1366x768 40Hz; virtual: 1366x768 at 0,0
+- Completed reload, in  0.101 seconds
 <RI> Initializing input.
 <RI> Input initialized.
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initialized touch support.
 Platform assembly: C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\System.dll (this message is harmless)
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 53.251240 ms
+UnloadTime: 8.159436 ms
 
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 242.
-Total: 3.477356 ms (FindLiveObjects: 0.033708 ms CreateObjectMapping: 0.025892 ms MarkObjects: 3.391864 ms  DeleteObjects: 0.024426 ms)
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 318.
+Total: 0.423555 ms (FindLiveObjects: 0.033708 ms CreateObjectMapping: 0.030777 ms MarkObjects: 0.344902 ms  DeleteObjects: 0.013190 ms)
 
 Platform assembly: C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\UnityScript.Lang.dll (this message is harmless)
-Empty string passed to parseInt in function NumberOfNeutrons()
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Empty string passed to parseInt in function NumberOfNeutrons()
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Empty string passed to parseInt in function NumberOfNeutrons()
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Empty string passed to parseInt in function NumberOfNeutrons()
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Empty string passed to parseInt in function NumberOfNeutrons()
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Empty string passed to parseInt in function NumberOfNeutrons()
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.188126 ms
-
-Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 212.
-Total: 0.452378 ms (FindLiveObjects: 0.042502 ms CreateObjectMapping: 0.025403 ms MarkObjects: 0.355161 ms  DeleteObjects: 0.027846 ms)
-
 Platform assembly: C:\Users\Eli Verbrugge\Documents\GitHub\build-a-bohr\build-a-bohr\Bab_Data\Managed\Boo.Lang.dll (this message is harmless)
-numProtons: 88
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Changer()
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Creator()
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Creator()
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-22
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
