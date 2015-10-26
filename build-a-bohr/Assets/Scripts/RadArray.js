@@ -4,6 +4,7 @@ var protons = ChangeAtoms.protons;
 var massnumber = 2;
 var longstring = "";
 public static var RadioActiveMessage = "c";
+public static var RadDecayType = "c";
 //public static var Restart = false;
 //public static var canRestart = false;
 
@@ -42,40 +43,49 @@ function Update () {
 	neutrons = ChangeAtoms.neutrons;
 	massnumber = protons + neutrons;
 	if(protons <= RadioactiveArray.length && protons > 0){
-		if(RadioactiveArray[protons][massnumber] == 1){
+		if(RadioactiveArray[protons][massnumber] == 0){
 			RadioActiveMessage = "Unknown radioactive decay!";
+			RadDecayType = "Unknown";
 		}
 		else if(RadioactiveArray[protons][massnumber] == 1){
 			RadioActiveMessage = "Seems like this combination is stable, so we are good to go!";
+			RadDecayType = "Stable";
 		}
 		else if(RadioactiveArray[protons][massnumber] == 2) 
 		{
 			RadioActiveMessage = "This combination is too unstable to even exist for a moment!";
+			RadDecayType = "Unstable";
 		}
 		else if(RadioactiveArray[protons][massnumber] == 3) 
 		{
 			RadioActiveMessage = "This combination will undergo Beta decay!";
+			RadDecayType = "Beta";
 		}
 		else if(RadioactiveArray[protons][massnumber] == 4) 
 		{
 			RadioActiveMessage = "This combination will undergo Alpha decay!";
+			RadDecayType = "Alpha";
 		}
 		else if(RadioactiveArray[protons][massnumber] == 5) 
 		{
 			RadioActiveMessage = "This combination will undergo Neutron emission!";
+			RadDecayType = "Neutron";
 		}
 		else if(RadioactiveArray[protons][massnumber] == 6) 
 		{
 			RadioActiveMessage = "This combination will undergo Proton emission!";
+			RadDecayType = "Proton";
 		}
 		else if(RadioactiveArray[protons][massnumber] == 7) 
 		{
 			RadioActiveMessage = "This combination will undergo Electron capture!";
+			RadDecayType = "Electron";
 		}
 	}
 	else
 	{
 	 RadioActiveMessage = "Not supported at this point!";
+	 RadDecayType = "Unsupported";
 	}	
 	
 	

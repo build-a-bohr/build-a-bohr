@@ -15,8 +15,6 @@ function Update() {
 	numNeutrons = ChangeAtoms.neutrons;
 
 	if(numProtons != prevNumProtons && numProtons != 0 && numProtons <= TOTAL_NUM_ELEMENTS) {
-		
-
 		Changer();
 	} 
 	
@@ -30,19 +28,21 @@ function Update() {
 
 function Changer() {
 	
-
-	if(numProtons > 0 && numProtons <= 20 && numNeutrons < 25) {
-		range = 0.25;
+	if(numProtons > 0 && numProtons <= 10)
+	{
+	
 	}
-	//if(numProtons > 0 && numProtons <= 20 && numNeutrons > 25) {}
-	if(numProtons > 20 && numProtons <= 45) {
-		range = 0.25;
+	else if(numProtons > 10 && numProtons <= 20) {
+		range = 0.2;
+	}
+	else if(numProtons > 20 && numProtons <= 45) {
+		range = 0.3;
 	} 
-	if(numProtons > 45 && numProtons < 93) {
-		range = 0.3;
+	else if(numProtons > 45 && numProtons < 93) {
+		range = 0.35;
 	}
-	if(numProtons > 93 && numProtons <= 118) {
-		range = 0.3;
+	else if(numProtons > 93 && numProtons <= 118) {
+		range = 0.4;
 	}
 	
 	
@@ -57,11 +57,11 @@ function Changer() {
 	
 	if(numProtons > 0 && numProtons <= TOTAL_NUM_ELEMENTS) {			
 		CreatorP();
-		prevNumProtons = ChangeAtoms.protons;
+		prevNumProtons = numProtons;
 	}
 	if(numNeutrons > 0 && numProtons <= TOTAL_NUM_ELEMENTS) {			
 		CreatorN();
-		prevNumNeutrons = ChangeAtoms.neutrons;
+		prevNumNeutrons = numNeutrons;
 		
 	}
 }
@@ -83,7 +83,7 @@ function CreatorN() {
 	
 
 	for(var y = 0; y < numNeutrons; y++) {
-		var pos = Vector3(Random.Range(-range, range), Random.Range(-range -0.02, range + 0.02), Random.Range(-1.0, 1.0));
+		var pos = Vector3(Random.Range(-range - 0.1, range + 0.1), Random.Range(-range -0.2, range + 0.2), Random.Range(-1.0, 1.0));
 		Instantiate(neutrons, pos, Quaternion.identity);
 		yield WaitForSeconds (0.01);
 	}

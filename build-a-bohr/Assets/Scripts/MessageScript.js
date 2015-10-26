@@ -20,7 +20,7 @@ var neutronInput : UnityEngine.UI.InputField;
 //declares all the numerical variables
 var protons = ChangeAtoms.protons;
 var neutrons = ChangeAtoms.neutrons;
-var messageVal = 1;
+public static var messageVal = 1;
 var increment = 1;
 var stage = 1;
 //creates a message variable used to display text relating to if the created atom is radioactive or not
@@ -180,7 +180,7 @@ function Update() {
 	protons = ChangeAtoms.protons;
 	neutrons = ChangeAtoms.neutrons;
 	RadioActiveMessage = RadArray.RadioActiveMessage;
-	if(messageVal == 12 || messageVal == 5)
+	if(messageVal == 12 || messageVal == 5 || messageVal == 19)
 	{
 		MessageText.gameObject.SetActive(false);
 	 	MessageBubble.gameObject.SetActive(false);
@@ -238,6 +238,8 @@ function Update() {
 	if(messageVal == 3)
 	{
 	 			protonInput.gameObject.SetActive(true);
+	 			AtomicNumber.gameObject.SetActive(false);
+	 		    ElementSymbol.gameObject.SetActive(false);
 	}
 	else if(messageVal == 4)
 	{
@@ -297,16 +299,8 @@ function Update() {
 	 		   Instantiater.gameObject.SetActive(false);
 	 			
 	}
-	else if(messageVal == 16)
-	{
-		
-		if(RadioActiveMessage == "This combination is too unstable to even exist for a moment!")
-		{
-	 		 	Scatter();
-	 		 	
-	 	}
-	}
 	else if(messageVal == 17){
+		Instantiater.gameObject.SetActive(false);
 		if(RadioActiveMessage == "Seems like this combination is stable, so we are good to go!" || RadioActiveMessage == "Not supported at this point!"){	
 	 		  //nothing!
 		}
@@ -314,30 +308,32 @@ function Update() {
 	 		 messageVal = 22;
 	 		 UpdateArray();
 	 		 MessageText.text = MessageArr[messageVal];
+	 		 Bohr.gameObject.SetActive(true);
 	 	}
 	}
-	else if(messageVal == 18){
+	else if(messageVal == 19){
 				//Shrinks both the Neutrons and Protons, so that we can demonstrate the bohr diagrams without scaling issues
 				ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
      			for(i = 0 ; i < ProtonArray.length ; i ++){
          			if(ProtonArray[i].transform.localScale.x > 0.03 && ProtonArray[i].transform.localScale.y > 0.03 ){
-         				ProtonArray[i].transform.localScale = ProtonArray[i].transform.localScale - new Vector3(0.02, 0.02, 0) * Time.deltaTime;
+         				ProtonArray[i].transform.localScale = ProtonArray[i].transform.localScale - new Vector3(0.015, 0.015, 0) * Time.deltaTime;
          			}		
          	  	}
     			NeutronArray =  GameObject.FindGameObjectsWithTag ("neutron");
      		  	for(i = 0 ; i < NeutronArray.length ; i ++){
      		  		if(NeutronArray[i].transform.localScale.x > 0.03 && NeutronArray[i].transform.localScale.y > 0.03 ){
-         				NeutronArray[i].transform.localScale = NeutronArray[i].transform.localScale - new Vector3(0.02, 0.02, 0) * Time.deltaTime;
+         				NeutronArray[i].transform.localScale = NeutronArray[i].transform.localScale - new Vector3(0.015, 0.015, 0) * Time.deltaTime;
          			}	
          	  	}
 	}
-	else if(messageVal == 20){
+	else if(messageVal == 21){
 		Bohr.gameObject.SetActive(true);		
 	}
-	else if(messageVal == 21){
-		ElectronController.gameObject.SetActive(true);		
-	}
 	else if(messageVal == 22){
+		ElectronController.gameObject.SetActive(true);
+		Instantiater.gameObject.SetActive(false);		
+	}
+	else if(messageVal == 23){
 		ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
      		  for(i = 0 ; i < ProtonArray.length ; i ++){
          			Destroy(ProtonArray[i]);	
@@ -405,7 +401,8 @@ MessageArr = [
 	"Now let's see if the proton - neutron combination you have chosen is stable...",
 	 RadioActiveMessage,
 	"The nucleus is very, very small, in fact if the nucleus was a football the atom would be the size of the football stadium!",
-	"Now let's shrink it down a bit so we can add the final ingredients",
+	"Now let's shrink it down a bit so we can add the final ingredients (remeber however that realisitically it should be a 10,000 times smaller than what you will see on screen!)",
+	"",
 	"Good day. My name is J. J Thompson, and in 1887, I discovered the electron.",
 	"But it was me, Niels Bohr (the founder of build a bohr workshop) who figured out that electrons exist around the nucleus in quantum energy levels.",
 	"Now, let's have a look at the bohr diagram for this element!",
@@ -414,31 +411,7 @@ MessageArr = [
 ];
 }
 
-function Scatter (){
 
-	ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
-    for(var i = 0 ; i < ProtonArray.length ; i ++){
-    	var randomDirection : Vector3 = new Vector3(Random.Range(-359, 359),Random.Range(-359, 359),Random.Range(-359, 359));
-		transform.Rotate(randomDirection);
-		for(var y = 10; y > 0; y--){    
-			ProtonArray[i].transform.position += transform.forward * 2 *  Time.deltaTime;
-		}			
-    }
-    NeutronArray =  GameObject.FindGameObjectsWithTag ("neutron");
-    for(i = 0 ; i < NeutronArray.length ; i ++){
-   		randomDirection = new Vector3(Random.Range(-359, 359),Random.Range(-359, 359),Random.Range(-359, 359)); 
-		transform.Rotate(randomDirection);
-		for(y = 10; y > 0; y--){    
-			NeutronArray[i].transform.position += transform.forward * 2 *  Time.deltaTime;
-		}	
-    }
-    yield WaitForSeconds (1);
-	messageVal = 17;
-	
-    
-    
-
-}
 function DecreaseMessageVal (){
 	if(Application.loadedLevel == 2){
     	if(messageVal == 5){
@@ -454,8 +427,13 @@ function DecreaseMessageVal (){
    	 	
    	}
    	if(Application.loadedLevel == 1){
-   	 	if(messageVal == 2){
+   	 	if(messageVal == 2)
+   	 	{
    	 		increment = 2;
+   	 	}
+   	 	else if(RadioActiveMessage != "Seems like this combination is stable, so we are good to go!" && messageVal == 21)
+   	 	{
+   	 		increment = 6;
    	 	}
    	}
 	messageVal -= increment;
