@@ -30,7 +30,7 @@ function Changer() {
 	
 	if(numProtons > 0 && numProtons <= 10)
 	{
-	
+	 	range = 0.1;
 	}
 	else if(numProtons > 10 && numProtons <= 20) {
 		range = 0.2;

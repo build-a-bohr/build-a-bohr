@@ -301,6 +301,9 @@ function Update() {
 	}
 	else if(messageVal == 17){
 		Instantiater.gameObject.SetActive(false);
+		MassNumber.text = (protons + neutrons).ToString();
+		AtomicNumber.text = protons.ToString();
+		ElementSymbol.text = NameArray[protons][1].ToString();
 		if(RadioActiveMessage == "Seems like this combination is stable, so we are good to go!" || RadioActiveMessage == "Not supported at this point!"){	
 	 		  //nothing!
 		}
