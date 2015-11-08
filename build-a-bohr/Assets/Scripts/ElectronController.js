@@ -21,14 +21,9 @@ var shift2 : float = 0;
 var scale : float = 0;
 
 
-<<<<<<< HEAD
+
 function Start() {
 	electrons = ChangeAtoms.protons;
-=======
-function Start () {
- electrons = ChangeAtoms.protons;
- 
->>>>>>> testing
 }
 function Update (){
 

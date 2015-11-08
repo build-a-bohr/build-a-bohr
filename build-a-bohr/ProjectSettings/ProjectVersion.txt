@@ -1,6 +1,2 @@
-<<<<<<< HEAD
-m_EditorVersion: 5.0.1f1
-=======
 m_EditorVersion: 5.1.1f1
->>>>>>> testing
 m_StandardAssetsVersion: 0
