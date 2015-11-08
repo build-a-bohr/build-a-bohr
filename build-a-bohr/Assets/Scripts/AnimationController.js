@@ -1,4 +1,5 @@
 ﻿#pragma strict
+var obj;
 var decayType = RadArray.RadDecayType;
 var electronSprite : GameObject;
 var electronCaptureSprite: GameObject;
@@ -58,6 +59,7 @@ function Update ()
 			ChangeAtoms.protons -= 1;
 			ChangeAtoms.neutrons += 1;
 			Instantiater.gameObject.SetActive(true);
+			
 
 			
 			
@@ -73,7 +75,6 @@ function Update ()
 function BetaDecay ()
 {
 	yield WaitForSeconds(1);
-	Instantiate(electronSprite, Vector3(0, 0, 0), Quaternion.identity);
 	for(var i = 1; i > 0; i--)
 	{
 		Instantiate(electronSprite, Vector3(0, 0, 0), Quaternion.identity);
@@ -83,7 +84,6 @@ function BetaDecay ()
 function AlphaDecay ()
 {
 	yield WaitForSeconds(1);
-	Instantiate(alphaSprite, Vector3(0, 0, 0), Quaternion.identity);
 	for(var i = 1; i > 0; i--)
 	{
 		Instantiate(alphaSprite, Vector3(0, 0, 0), Quaternion.identity);
@@ -93,7 +93,6 @@ function AlphaDecay ()
 function ProtonEmission ()
 {
 	yield WaitForSeconds(1);
-	Instantiate(protonSprite, Vector3(0, 0, 0), Quaternion.identity);
 	for(var i = 1; i > 0; i--)
 	{
 		Instantiate(protonSprite, Vector3(0, 0, 0), Quaternion.identity);
@@ -103,13 +102,15 @@ function ProtonEmission ()
 function ElectronCapture ()
 {
 	yield WaitForSeconds(1);
-	Instantiate(electronCaptureSprite, Vector3(0, 0, 0), Quaternion.identity);
 	for(var i = 1; i > 0; i--)
 	{
-		Instantiate(electronCaptureSprite, Vector3(0, 0, 0), Quaternion.identity);
-		electronCaptureSprite.GetComponent.<Animation>().Play("1Particle");
+		var obj = Instantiate(electronCaptureSprite, Vector3(0, 0, 0), Quaternion.identity);
+		electronCaptureSprite.GetComponent.<Animation>().Play("ElectronCapture");
+
 	}
-	Destroy (electronCaptureSprite);
+	yield WaitForSeconds(2);
+	Destroy (obj);
+	
 }
 function Scatter (){
 
