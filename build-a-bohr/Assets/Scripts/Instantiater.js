@@ -15,36 +15,37 @@ function Update() {
 	numNeutrons = ChangeAtoms.neutrons;
 
 	if(numProtons != prevNumProtons && numProtons != 0 && numProtons <= TOTAL_NUM_ELEMENTS) {
-		Debug.Log("numProtons: " + numProtons);
-
 		Changer();
 	} 
 	
-	if(numNeutrons != prevNumNeutrons && numNeutrons != 0) {
+	if(numNeutrons != prevNumNeutrons && numNeutrons != 0 ) {
 		Changer();
-	} else if(numProtons > TOTAL_NUM_ELEMENTS && numNeutrons > TOTAL_NUM_ELEMENTS ) {
-		Destroyer("proton");
-	}
+	} 
+	//else if(numProtons > TOTAL_NUM_ELEMENTS && numNeutrons > TOTAL_NUM_ELEMENTS ) {
+		//Destroyer("proton");
+	//}
 }
 
 function Changer() {
-	Debug.Log("Changer()");
-
-	if(numProtons > 0 && numProtons <= 20 && numNeutrons < 25) {
-		range = 0.25;
+	
+	if(numProtons > 0 && numProtons <= 10)
+	{
+	 	range = 0.1;
 	}
-	//if(numProtons > 0 && numProtons <= 20 && numNeutrons > 25) {}
-	if(numProtons > 20 && numProtons <= 45) {
-		range = 0.25;
+	else if(numProtons > 10 && numProtons <= 20) {
+		range = 0.2;
+	}
+	else if(numProtons > 20 && numProtons <= 45) {
+		range = 0.3;
 	} 
-	if(numProtons > 45 && numProtons < 93) {
+	else if(numProtons > 45 && numProtons < 93) {
+		range = 0.35;
+	}
+	else if(numProtons > 93 && numProtons <= 118) {
 		range = 0.4;
 	}
-	if(numProtons > 93 && numProtons <= 118) {
-		range = 0.6;
-	}
 	
-	Destroyer("proton");
+	
 	
 	if(numProtons == 0) {
 		numProtons = ChangeAtoms.protons;
@@ -56,11 +57,11 @@ function Changer() {
 	
 	if(numProtons > 0 && numProtons <= TOTAL_NUM_ELEMENTS) {			
 		CreatorP();
-		prevNumProtons = ChangeAtoms.protons;
+		prevNumProtons = numProtons;
 	}
-	if(numNeutrons > 0) {			
+	if(numNeutrons > 0 && numProtons <= TOTAL_NUM_ELEMENTS) {			
 		CreatorN();
-		prevNumNeutrons = ChangeAtoms.neutrons;
+		prevNumNeutrons = numNeutrons;
 		
 	}
 }
@@ -69,20 +70,22 @@ function Changer() {
 // try to eliminate blank spaces between protons, instantiate objects touching other objects
 // spawn in circle
 function CreatorP() {
-	Debug.Log("Creator()"); // check if actually happening
+	
 
 	for(var y = 0; y < numProtons; y++) {
-		var pos = Vector3(Random.Range(-range, range), Random.Range(0.0, range), Random.Range(-1.0, 1.0));
+		var pos = Vector3(Random.Range(-range, range), Random.Range(-range - 0.02, range + 0.02), Random.Range(-1.0, 1.0));
 		Instantiate(protons, pos, Quaternion.identity);
+		yield WaitForSeconds (0.01);
 	}
 }
 
 function CreatorN() {
-	Debug.Log("Creator()"); // check if actually happening
+	
 
-	for(var y = 0; y < numProtons; y++) {
-		var pos = Vector3(Random.Range(-range, range), Random.Range(-range, range), Random.Range(-1.0, 1.0));
+	for(var y = 0; y < numNeutrons; y++) {
+		var pos = Vector3(Random.Range(-range - 0.1, range + 0.1), Random.Range(-range -0.2, range + 0.2), Random.Range(-1.0, 1.0));
 		Instantiate(neutrons, pos, Quaternion.identity);
+		yield WaitForSeconds (0.01);
 	}
 }
 
