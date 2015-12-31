@@ -10,6 +10,7 @@ var BohrShell4 : Transform;
 var BohrShell5 : Transform;
 var BohrShell6 : Transform;
 var BohrShell7 : Transform;
+var MyCamera : Camera;
 var n = 1;
 var z = 1;
 var i = 1;
@@ -19,19 +20,22 @@ var electronsToCountTo = 0;
 var shift : float = 0;
 var shift2 : float = 0;
 var scale : float = 0;
+var relScal : float = 0;
 
 
 
-function Start() {
-	electrons = ChangeAtoms.protons;
+function Start () {
+ electrons = ChangeAtoms.protons;
+ setScale();
+
+ 
 }
 function Update (){
-
-if(electrons > 0 && electrons <= 56 ){
-  CreateSmall();
+	if(electrons > 0 && electrons <= 56 ){
+ 	 CreateSmall();
   
- }
-else{
+ 	}
+	else{
   	if(electrons == 57){
    		electronsToRemember = electrons - 58;
    		electronsToCountTo = 58;
@@ -166,26 +170,23 @@ function CreateSmall () {
 // Deals with spawning elements up to Barium (56), uses weird coordinates however it works for now (might eventually rewrite)
  if(electrons > 0){
   	var pos = Vector3(-0.1, -0.12, 1);
-  	Instantiate(BohrShell, pos, Quaternion.identity);
+    Instantiate(BohrShell, pos, Quaternion.identity);
   	if(electrons > 2){
   	 electronsToCount = electrons;
-  	 shift2 = 1;
   	}
   	if(electrons <= 2){
   	 electronsToCount = electrons;
-  	 shift2 = 1.3;
   	}
   	// use trig to spawn electrons around the circle with a max of 2, coordinates of (0, and pi)
   	for(var y = electronsToCount; y > 0; y -= 1){
-  	Instantiate(electronSprite, Vector3((n * Mathf.Acos(0) * shift2), 0, 0), Quaternion.identity);
+  	Instantiate(electronSprite, Vector3((n * Mathf.Acos(0) * 0.8), 0, 0), Quaternion.identity);
   	n = n * -1;
   	}
-  	shift2 = 0;
     electrons -= 2;
     electronsToCount = 0;
     if(electrons > 0){
     	scale = 1.9;
-  		Instantiate(BohrShell1, pos, Quaternion.identity);
+  		Instantiate(BohrShell1, pos, Quaternion.identity);;
     	if(electrons >= 8){
   	 		electronsToCount = electrons;
   		}
@@ -208,6 +209,7 @@ function CreateSmall () {
   		if(electrons > 0){
     		scale = 2.5;
   			Instantiate(BohrShell2, pos, Quaternion.identity);
+  			
     		if(electrons >= 20){
   	 			electronsToCount = 20;
   			}
@@ -218,7 +220,7 @@ function CreateSmall () {
   			scale = 2.5;
   			for(y = electronsToCount; y > electronsToCount - 8 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
   				Instantiate(electronSprite, Vector3(Mathf.Cos((0*Mathf.PI/9) - shift)*scale, Mathf.Sin((0*Mathf.PI/9) - shift)*scale, 0), Quaternion.identity);
-  				shift += (18*Mathf.PI/9);
+  				shift += (2*Mathf.PI/9);
   			}
   			
   			electronsToCount -= 8;
@@ -227,6 +229,7 @@ function CreateSmall () {
   			if(electronsToCount > 0){
   			
   			Instantiate(BohrShell3, pos, Quaternion.identity);
+  	
   			scale = 3;
   			for(y = electronsToCount; y > electronsToCount - 2 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
   				Instantiate(electronSprite, Vector3(Mathf.Cos((2*Mathf.PI/9) - shift)*scale, Mathf.Sin((2*Mathf.PI/9) - shift)*scale, 0), Quaternion.identity);
@@ -264,7 +267,6 @@ function CreateSmall () {
  
   				}
   				electronsToCount -= 8;
-  				Debug.Log(electronsToCount);
   				if(electronsToCount > 0){
   				Instantiate(BohrShell4, pos, Quaternion.identity);
   				shift = 0;
@@ -299,6 +301,7 @@ function CreateSmall () {
   				
   				if(electronsToCount > 0){
   				Instantiate(BohrShell5, pos, Quaternion.identity);
+  				
   				scale = 4;
   				for(y = electronsToCount; y > electronsToCount - 2 && y > 0; y -= 1){ // what number of electrons do you want the group to stop at
   					Instantiate(electronSprite, Vector3(Mathf.Cos((0*Mathf.PI/4) - shift)*scale, Mathf.Sin((0*Mathf.PI/4) - shift)*scale, 0), Quaternion.identity);
@@ -510,3 +513,42 @@ function CreateBig (){
  electrons -= 2;
 
 }
+
+
+//finds a relative scale so we can resize later on
+function setScale()
+{
+	if(electrons < 10)
+	{
+	 	relScal = 0.1;
+	}
+	else if(electrons > 10 && electrons < 30)
+	{
+		relScal = 0.3;
+	}
+	else if(electrons > 30 && electrons < 50)
+	{
+		relScal = 0.5;
+	}
+	else if(electrons > 50 && electrons < 70)
+	{
+		relScal = 0.7;
+	}
+	else if(electrons > 70 && electrons < 90)
+	{
+		relScal = 0.8;
+	}
+	else if(electrons > 90 && electrons < 110)
+	{
+		relScal = 0.9;
+	}
+	else if(electrons > 110)
+	{
+		relScal = 1.0;
+	}
+	
+	MyCamera.orthographicSize -= relScal;
+
+}
+
+ 

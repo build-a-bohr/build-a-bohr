@@ -33,7 +33,7 @@ function NumberOfProtons(howManyP : String) {
 function NumberOfNeutrons(howManyN : String) {
 	try {
 		neutrons = parseInt(howManyN);
-	} catch(e) {
+    } catch(e) {
 		Debug.Log("Empty string passed to parseInt in function NumberOfNeutrons()");
 	}
 }
