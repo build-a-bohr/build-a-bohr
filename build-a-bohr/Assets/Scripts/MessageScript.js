@@ -276,6 +276,14 @@ function Update() {
          			Destroy(ProtonArray[i]);	
          	   	}
 	 			neutronInput.gameObject.SetActive(true);
+	 			if(neutrons > RadArray.RadioactiveArray.length - (protons - 1))
+	 			{
+	 				neutrons = RadArray.RadioactiveArray.length - (protons - 1) ;
+	 			}
+	 			else if(neutrons == 0)
+	 			{
+	 			 neutrons = 1;
+	 			}
 	 			
 	 			
 	}
@@ -317,14 +325,18 @@ function Update() {
 	else if(messageVal == 19){
 				//Shrinks both the Neutrons and Protons, so that we can demonstrate the bohr diagrams without scaling issues
 				ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
-     			for(i = 0 ; i < ProtonArray.length ; i ++){
-         			if(ProtonArray[i].transform.localScale.x > 0.03 && ProtonArray[i].transform.localScale.y > 0.03 ){
+     			for(i = 0 ; i < ProtonArray.length ; i ++)
+     			{
+         			if(ProtonArray[i].transform.localScale.x > 0.03 && ProtonArray[i].transform.localScale.y > 0.03 )
+         			{
          				ProtonArray[i].transform.localScale = ProtonArray[i].transform.localScale - new Vector3(0.015, 0.015, 0) * Time.deltaTime;
          			}		
          	  	}
     			NeutronArray =  GameObject.FindGameObjectsWithTag ("neutron");
-     		  	for(i = 0 ; i < NeutronArray.length ; i ++){
-     		  		if(NeutronArray[i].transform.localScale.x > 0.03 && NeutronArray[i].transform.localScale.y > 0.03 ){
+     		  	for(i = 0 ; i < NeutronArray.length ; i ++)
+     		  	{
+     		  		if(NeutronArray[i].transform.localScale.x > 0.03 && NeutronArray[i].transform.localScale.y > 0.03 )
+     		  		{
          				NeutronArray[i].transform.localScale = NeutronArray[i].transform.localScale - new Vector3(0.015, 0.015, 0) * Time.deltaTime;
          			}	
          	  	}
@@ -445,19 +457,20 @@ function DecreaseMessageVal (){
 
 }
 function IncreaseMessageVal (){
-	 if(Application.loadedLevel == 2){
-    	if(messageVal == 5){
+	 if(Application.loadedLevel == 2)
+	 {
+    	if(messageVal == 5)
+    	{
     		increment = 5;
     	}
-    	else if(messageVal == 14 || messageVal == 15){
+    	else if(messageVal == 14 || messageVal == 15)
+    	{
     		increment = 1;
-    		Debug.Log("Hit the radioactive part!");
     	}
     	else if(messageVal == 17)
     	{
     		increment = 3;
-    	}
-    	else{
+    	}else{
     		increment = 2;
     	}
    	 	

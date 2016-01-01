@@ -8,7 +8,7 @@ public static var RadDecayType = "c";
 //public static var canRestart = false;
 
 //The numbers in this array represent states of radioactivity, used because I think it is more efficient than words.
-public var RadioactiveArray = [ 
+public static var RadioactiveArray = [ 
 	[ 0, 2],
     [ 0, 1, 1, 3, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
     [ 0, 1, 1, 5, 3, 5, 3, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
