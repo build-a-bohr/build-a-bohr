@@ -1,4 +1,6 @@
 #pragma strict
+import UnityEngine.SceneManagement;
+
 //declares all the variables referencing gameobjects that are not UI
 var Rutherford : GameObject;
 var Bohr : GameObject;
@@ -180,220 +182,207 @@ function Update() {
 	protons = ChangeAtoms.protons;
 	neutrons = ChangeAtoms.neutrons;
 	RadioActiveMessage = RadArray.RadioActiveMessage;
-	if(messageVal == 12 || messageVal == 5 || messageVal == 19)
+	if(SceneManager.GetActiveScene().buildIndex == 1)
 	{
-		MessageText.gameObject.SetActive(false);
-	 	MessageBubble.gameObject.SetActive(false);
+		if(messageVal == 12 || messageVal == 5 || messageVal == 19)
+		{
+			MessageText.gameObject.SetActive(false);
+		 	MessageBubble.gameObject.SetActive(false);
+		}
+		else
+		{
+			MessageText.gameObject.SetActive(true);
+		 	MessageBubble.gameObject.SetActive(true);
+		}
+		if(messageVal >= 0 && messageVal < 6)
+		{
+			Rutherford.gameObject.SetActive(true);
+			Chadwick.gameObject.SetActive(false);
+			Thomson.gameObject.SetActive(false);
+			Bohr.gameObject.SetActive(false);
+			Curie.gameObject.SetActive(false);				
+			
+		}
+		else if(messageVal >= 6 && messageVal < 14)
+		{
+			Rutherford.gameObject.SetActive(false);
+			Chadwick.gameObject.SetActive(true);
+			Thomson.gameObject.SetActive(false);
+			Bohr.gameObject.SetActive(false);
+			Curie.gameObject.SetActive(false);
+		}
+		else if(messageVal >= 14 && messageVal < 19)
+		{
+			Rutherford.gameObject.SetActive(false);
+			Chadwick.gameObject.SetActive(false);
+			Thomson.gameObject.SetActive(false);
+			Bohr.gameObject.SetActive(false);
+			Curie.gameObject.SetActive(true);
+		
+		}
+		else if(messageVal == 19)
+		{
+			Rutherford.gameObject.SetActive(false);
+			Chadwick.gameObject.SetActive(false);
+			Thomson.gameObject.SetActive(true);
+			Bohr.gameObject.SetActive(false);
+			Curie.gameObject.SetActive(false);
+		
+		}
+		else if(messageVal >= 20 && messageVal < 23)
+		{
+			Rutherford.gameObject.SetActive(false);
+			Chadwick.gameObject.SetActive(false);
+			Thomson.gameObject.SetActive(false);
+			Bohr.gameObject.SetActive(true);
+			Curie.gameObject.SetActive(false);
+		
+		}
+			
+		if(messageVal == 3)
+		{
+		 			protonInput.gameObject.SetActive(true);
+		 			AtomicNumber.gameObject.SetActive(false);
+		 		    ElementSymbol.gameObject.SetActive(false);
+		}
+		else if(messageVal == 4)
+		{
+		 			protonInput.gameObject.SetActive(false);
+		 			AtomicNumber.gameObject.SetActive(true);
+		 		    ElementSymbol.gameObject.SetActive(true);
+		 			AtomicNumber.text = protons.ToString();
+		 		    ElementSymbol.text = NameArray[protons][1].ToString();
+		}
+		else if(messageVal == 5)
+		{
+				   protonInput.gameObject.SetActive(false);
+		 		   AtomicNumber.gameObject.SetActive(true);
+		 		   ElementSymbol.gameObject.SetActive(true);
+		 		   AtomicNumber.text = protons.ToString();
+		 		   ElementSymbol.text = NameArray[protons][1].ToString();
+		 		   Instantiater.gameObject.SetActive(true);
+		 			
+		}
+		else if(messageVal == 6)
+		{
+		 		   Instantiater.gameObject.SetActive(false);
+		 		   ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
+	     		   for(var i = 0 ; i < ProtonArray.length ; i ++){
+	         			Destroy(ProtonArray[i]);	
+	         	   }
+	         	   		
+		}
+		else if(messageVal == 10)
+		{
+					Instantiater.gameObject.SetActive(false);
+		 		   	ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
+	     		   	for(i = 0 ; i < ProtonArray.length ; i ++){
+	         			Destroy(ProtonArray[i]);	
+	         	   	}
+		 			neutronInput.gameObject.SetActive(true);
+		 			if(neutrons > RadArray.RadioactiveArray.length - (protons - 1))
+		 			{
+		 				neutrons = RadArray.RadioactiveArray.length - (protons - 1) ;
+		 			}
+		 			else if(neutrons == 0)
+		 			{
+		 			 neutrons = 1;
+		 			}
+		 			
+		 			
+		}
+		else if(messageVal == 11)
+		{
+		 			neutronInput.gameObject.SetActive(false);
+		 			MassNumber.gameObject.SetActive(true);
+		 			MassNumber.text = (protons + neutrons).ToString();
+		 			
+		}
+		else if(messageVal == 12)
+		{
+				   MassNumber.gameObject.SetActive(true);
+		 		   MassNumber.text = (protons + neutrons).ToString();
+		 		   Instantiater.gameObject.SetActive(true);
+		 		   neutronInput.gameObject.SetActive(false);
+		 			
+		}
+		else if(messageVal == 13)
+		{
+		 		   Instantiater.gameObject.SetActive(false);
+		 			
+		}
+		else if(messageVal == 17){
+			Instantiater.gameObject.SetActive(false);
+			MassNumber.text = (protons + neutrons).ToString();
+			AtomicNumber.text = protons.ToString();
+			ElementSymbol.text = NameArray[protons][1].ToString();
+			if(RadioActiveMessage == "Seems like this combination is stable, so we are good to go!" || RadioActiveMessage == "Not supported at this point!"){	
+		 		  //nothing!
+			}
+		 	else{
+		 		 messageVal = 23;
+		 		 UpdateArray();
+		 		 MessageText.text = MessageArr[messageVal];
+		 		 Bohr.gameObject.SetActive(true);
+		 	}
+		}
+		else if(messageVal == 19){
+					//Shrinks both the Neutrons and Protons, so that we can demonstrate the bohr diagrams without scaling issues
+					ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
+	     			for(i = 0 ; i < ProtonArray.length ; i ++)
+	     			{
+	         			if(ProtonArray[i].transform.localScale.x > 0.03 && ProtonArray[i].transform.localScale.y > 0.03 )
+	         			{
+	         				ProtonArray[i].transform.localScale = ProtonArray[i].transform.localScale - new Vector3(0.015, 0.015, 0) * Time.deltaTime;
+	         			}		
+	         	  	}
+	    			NeutronArray =  GameObject.FindGameObjectsWithTag ("neutron");
+	     		  	for(i = 0 ; i < NeutronArray.length ; i ++)
+	     		  	{
+	     		  		if(NeutronArray[i].transform.localScale.x > 0.03 && NeutronArray[i].transform.localScale.y > 0.03 )
+	     		  		{
+	         				NeutronArray[i].transform.localScale = NeutronArray[i].transform.localScale - new Vector3(0.015, 0.015, 0) * Time.deltaTime;
+	         			}	
+	         	  	}
+		}
+		else if(messageVal == 21){
+			Bohr.gameObject.SetActive(true);		
+		}
+		else if(messageVal == 22){
+			ElectronController.gameObject.SetActive(true);
+			Instantiater.gameObject.SetActive(false);		
+		}
+		else if(messageVal == 23){
+			ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
+	     		  for(i = 0 ; i < ProtonArray.length ; i ++){
+	         			Destroy(ProtonArray[i]);	
+	         	  }
+	        NeutronArray =  GameObject.FindGameObjectsWithTag ("neutron");
+	     		  for(i = 0 ; i < NeutronArray.length ; i ++){
+	         			Destroy(NeutronArray[i]);	
+	         	  }
+	        ElectronArray =  GameObject.FindGameObjectsWithTag ("electron");
+	     		  for(i = 0 ; i < ElectronArray.length ; i ++){
+	         			Destroy(ElectronArray[i]);	
+	         	  }
+	        ShellArray =  GameObject.FindGameObjectsWithTag ("shell");
+	     		  for(i = 0 ; i < ShellArray.length ; i ++){
+	         			Destroy(ShellArray[i]);	
+	         	  }
+			RestartButton.gameObject.SetActive(true);
+				
+		 			
+		}
 	}
-	else
+	else if(SceneManager.GetActiveScene().buildIndex == 2)
 	{
 		MessageText.gameObject.SetActive(true);
-	 	MessageBubble.gameObject.SetActive(true);
-	}
-	if(messageVal >= 0 && messageVal < 6)
-	{
-		Rutherford.gameObject.SetActive(true);
-		Chadwick.gameObject.SetActive(false);
-		Thomson.gameObject.SetActive(false);
-		Bohr.gameObject.SetActive(false);
-		Curie.gameObject.SetActive(false);				
-		
-	}
-	else if(messageVal >= 6 && messageVal < 14)
-	{
-		Rutherford.gameObject.SetActive(false);
-		Chadwick.gameObject.SetActive(true);
-		Thomson.gameObject.SetActive(false);
-		Bohr.gameObject.SetActive(false);
-		Curie.gameObject.SetActive(false);
-	}
-	else if(messageVal >= 14 && messageVal < 19)
-	{
-		Rutherford.gameObject.SetActive(false);
-		Chadwick.gameObject.SetActive(false);
-		Thomson.gameObject.SetActive(false);
-		Bohr.gameObject.SetActive(false);
-		Curie.gameObject.SetActive(true);
-	
-	}
-	else if(messageVal == 19)
-	{
-		Rutherford.gameObject.SetActive(false);
-		Chadwick.gameObject.SetActive(false);
-		Thomson.gameObject.SetActive(true);
-		Bohr.gameObject.SetActive(false);
-		Curie.gameObject.SetActive(false);
-	
-	}
-	else if(messageVal >= 20 && messageVal < 23)
-	{
-		Rutherford.gameObject.SetActive(false);
-		Chadwick.gameObject.SetActive(false);
-		Thomson.gameObject.SetActive(false);
-		Bohr.gameObject.SetActive(true);
-		Curie.gameObject.SetActive(false);
-	
-	}
-		
-	if(messageVal == 3)
-	{
-	 			protonInput.gameObject.SetActive(true);
-	 			AtomicNumber.gameObject.SetActive(false);
-	 		    ElementSymbol.gameObject.SetActive(false);
-	}
-	else if(messageVal == 4)
-	{
-	 			protonInput.gameObject.SetActive(false);
-	 			AtomicNumber.gameObject.SetActive(true);
-	 		    ElementSymbol.gameObject.SetActive(true);
-	 			AtomicNumber.text = protons.ToString();
-	 		    ElementSymbol.text = NameArray[protons][1].ToString();
-	}
-	else if(messageVal == 5)
-	{
-			   protonInput.gameObject.SetActive(false);
-	 		   AtomicNumber.gameObject.SetActive(true);
-	 		   ElementSymbol.gameObject.SetActive(true);
-	 		   AtomicNumber.text = protons.ToString();
-	 		   ElementSymbol.text = NameArray[protons][1].ToString();
-	 		   Instantiater.gameObject.SetActive(true);
-	 			
-	}
-	else if(messageVal == 6)
-	{
-	 		   Instantiater.gameObject.SetActive(false);
-	 		   ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
-     		   for(var i = 0 ; i < ProtonArray.length ; i ++){
-         			Destroy(ProtonArray[i]);	
-         	   }
-         	   		
-	}
-	else if(messageVal == 10)
-	{
-				Instantiater.gameObject.SetActive(false);
-	 		   	ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
-     		   	for(i = 0 ; i < ProtonArray.length ; i ++){
-         			Destroy(ProtonArray[i]);	
-         	   	}
-	 			neutronInput.gameObject.SetActive(true);
-	 			if(neutrons > RadArray.RadioactiveArray.length - (protons - 1))
-	 			{
-	 				neutrons = RadArray.RadioactiveArray.length - (protons - 1) ;
-	 			}
-	 			else if(neutrons == 0)
-	 			{
-	 			 neutrons = 1;
-	 			}
-	 			
-	 			
-	}
-	else if(messageVal == 11)
-	{
-	 			neutronInput.gameObject.SetActive(false);
-	 			MassNumber.gameObject.SetActive(true);
-	 			MassNumber.text = (protons + neutrons).ToString();
-	 			
-	}
-	else if(messageVal == 12)
-	{
-			   MassNumber.gameObject.SetActive(true);
-	 		   MassNumber.text = (protons + neutrons).ToString();
-	 		   Instantiater.gameObject.SetActive(true);
-	 		   neutronInput.gameObject.SetActive(false);
-	 			
-	}
-	else if(messageVal == 13)
-	{
-	 		   Instantiater.gameObject.SetActive(false);
-	 			
-	}
-	else if(messageVal == 17){
-		Instantiater.gameObject.SetActive(false);
-		MassNumber.text = (protons + neutrons).ToString();
-		AtomicNumber.text = protons.ToString();
-		ElementSymbol.text = NameArray[protons][1].ToString();
-		if(RadioActiveMessage == "Seems like this combination is stable, so we are good to go!" || RadioActiveMessage == "Not supported at this point!"){	
-	 		  //nothing!
-		}
-	 	else{
-	 		 messageVal = 22;
-	 		 UpdateArray();
-	 		 MessageText.text = MessageArr[messageVal];
-	 		 Bohr.gameObject.SetActive(true);
-	 	}
-	}
-	else if(messageVal == 19){
-				//Shrinks both the Neutrons and Protons, so that we can demonstrate the bohr diagrams without scaling issues
-				ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
-     			for(i = 0 ; i < ProtonArray.length ; i ++)
-     			{
-         			if(ProtonArray[i].transform.localScale.x > 0.03 && ProtonArray[i].transform.localScale.y > 0.03 )
-         			{
-         				ProtonArray[i].transform.localScale = ProtonArray[i].transform.localScale - new Vector3(0.015, 0.015, 0) * Time.deltaTime;
-         			}		
-         	  	}
-    			NeutronArray =  GameObject.FindGameObjectsWithTag ("neutron");
-     		  	for(i = 0 ; i < NeutronArray.length ; i ++)
-     		  	{
-     		  		if(NeutronArray[i].transform.localScale.x > 0.03 && NeutronArray[i].transform.localScale.y > 0.03 )
-     		  		{
-         				NeutronArray[i].transform.localScale = NeutronArray[i].transform.localScale - new Vector3(0.015, 0.015, 0) * Time.deltaTime;
-         			}	
-         	  	}
-	}
-	else if(messageVal == 21){
-		Bohr.gameObject.SetActive(true);		
-	}
-	else if(messageVal == 22){
-		ElectronController.gameObject.SetActive(true);
-		Instantiater.gameObject.SetActive(false);		
-	}
-	else if(messageVal == 23){
-		ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
-     		  for(i = 0 ; i < ProtonArray.length ; i ++){
-         			Destroy(ProtonArray[i]);	
-         	  }
-        NeutronArray =  GameObject.FindGameObjectsWithTag ("neutron");
-     		  for(i = 0 ; i < NeutronArray.length ; i ++){
-         			Destroy(NeutronArray[i]);	
-         	  }
-        ElectronArray =  GameObject.FindGameObjectsWithTag ("electron");
-     		  for(i = 0 ; i < ElectronArray.length ; i ++){
-         			Destroy(ElectronArray[i]);	
-         	  }
-        ShellArray =  GameObject.FindGameObjectsWithTag ("shell");
-     		  for(i = 0 ; i < ShellArray.length ; i ++){
-         			Destroy(ShellArray[i]);	
-         	  }
-		RestartButton.gameObject.SetActive(true);
-			
-	 			
+		MessageBubble.gameObject.SetActive(true);
+		AtomicNumber.gameObject.SetActive(true);
+		ElementSymbol.gameObject.SetActive(true);
 	}
 }
 	
-
-
-function NewMessage() {
-    //Increases the value of the array, then updates it, before finally displauing the text to the user
-    if(Application.loadedLevel == 2){
-    	if(messageVal == 5){
-    		increment = 5;
-    	}
-    	else if(messageVal == 14){
-    		increment = 1;
-    	}
-    	else{
-    		increment = 2;
-    	}
-   	 	
-   	 	
-   	}
-   	messageVal+= increment;
-   	UpdateArray ();
-   	MessageText.text = MessageArr[messageVal];
-    
-}
-
 function UpdateArray () {
 //updates the array so that it contains the correct values that it references (protons + namearray)
 MessageArr = [
@@ -425,10 +414,29 @@ MessageArr = [
 	""	
 ];
 }
+function UpdateContinousArray () {
+//updates the array so that it contains the correct values that it references (protons + namearray)
+MessageArr = [
+
+	"Okay! So what do you want to element do you want to build now?",
+	"So how many protons (1-118) do you want in this atom you are building?",
+	 protons + " proton(s); good that means you are making an atom of " + NameArray[protons][0] + ". Check out the symbol (" + NameArray[protons][1] + ")" + " and the atomic number (" + protons + ") at the top", 
+	"",
+	"So, how many neutrons (0-" +  (protons + 10) + ") do you want in your atom?",
+	neutrons + " neutron(s); good that means that you are making an atom of " + NameArray[protons][0] + "-" + (protons + neutrons),
+	"",
+	"Now let's see if the proton - neutron combination you have chosen is stable...",
+	 RadioActiveMessage,
+	"",
+	"Now, let's have a look at the bohr diagram for this element!",
+	"Do you want to retry?",
+	""	
+];
+}
 
 
 function DecreaseMessageVal (){
-	if(Application.loadedLevel == 2){
+	if(SceneManager.GetActiveScene().buildIndex == 2){
     	if(messageVal == 5){
     		increment = 5;
     	}
@@ -441,7 +449,7 @@ function DecreaseMessageVal (){
    	 	
    	 	
    	}
-   	if(Application.loadedLevel == 1){
+   	if(SceneManager.GetActiveScene().buildIndex == 1){
    	 	if(messageVal == 2)
    	 	{
    	 		increment = 2;
@@ -457,28 +465,23 @@ function DecreaseMessageVal (){
 
 }
 function IncreaseMessageVal (){
-	 if(Application.loadedLevel == 2)
+	 if(SceneManager.GetActiveScene().buildIndex == 2)
 	 {
-    	if(messageVal == 5)
-    	{
-    		increment = 5;
-    	}
-    	else if(messageVal == 14 || messageVal == 15)
-    	{
-    		increment = 1;
-    	}
-    	else if(messageVal == 17)
-    	{
-    		increment = 3;
-    	}else{
-    		increment = 2;
-    	}
-   	 	
-   	 	
+	 	if(messageVal > 23)
+	 	{
+	 		messageVal = 0;
+	 	}
+	 	messageVal += increment;
+	 	UpdateContinousArray();
+   		MessageText.text = MessageArr[messageVal];
+    
    	 }
    	 
-	 messageVal += increment;
-	 UpdateArray ();
-   	 MessageText.text = MessageArr[messageVal];
+	 if(SceneManager.GetActiveScene().buildIndex == 1)
+	 {
+	 	messageVal += increment;
+	 	UpdateArray ();
+   		MessageText.text = MessageArr[messageVal];
+   	}
 	
 }

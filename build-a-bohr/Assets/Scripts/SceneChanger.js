@@ -8,6 +8,7 @@
  */
  
 #pragma strict
+import UnityEngine.SceneManagement;
 
 public var clickToLoad : boolean = false;
 public var button : boolean = false;
@@ -32,11 +33,11 @@ function Update() {
 }
 
 function Load() {
-	if(Application.loadedLevel == 2){
+	if(SceneManager.GetActiveScene().buildIndex == 2){
 		Debug.Log("Boo!");
-		Application.LoadLevel(Application.loadedLevel);
-	}
+  		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+  	}
 	else{
-		Application.LoadLevel(Application.loadedLevel + 1);
+		  SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 }
