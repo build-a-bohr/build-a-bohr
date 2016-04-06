@@ -40,4 +40,5 @@ function Load() {
 	else{
 		  SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
+	MessageScript.messageVal = 1;
 }

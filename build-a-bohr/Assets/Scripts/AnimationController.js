@@ -17,7 +17,7 @@ function Update ()
 	//keeps track of variables
 	decayType = RadArray.RadDecayType;
 	messageVal = MessageScript.messageVal;
-	if(messageVal == 16)
+	if(messageVal == 16 || messageVal == 8 && SceneManager.GetActiveScene().buildIndex == 2)
 	{
 		if( decayType == "Beta" && playedAnimation == false)
 		{
@@ -119,7 +119,7 @@ function Scatter (){
     	var randomDirection : Vector3 = new Vector3(Random.Range(-359, 359),Random.Range(-359, 359),Random.Range(-359, 359));
 		transform.Rotate(randomDirection);
 		for(var y = 10; y > 0; y--){    
-			ProtonArray[i].transform.position += transform.forward * 2 *  Time.deltaTime;
+			ProtonArray[i].transform.position += transform.forward * 3 *  Time.deltaTime;
 		}			
     }
     var NeutronArray =  GameObject.FindGameObjectsWithTag ("neutron");
@@ -127,7 +127,7 @@ function Scatter (){
    		randomDirection = new Vector3(Random.Range(-359, 359),Random.Range(-359, 359),Random.Range(-359, 359)); 
 		transform.Rotate(randomDirection);
 		for(y = 10; y > 0; y--){    
-			NeutronArray[i].transform.position += transform.forward * 2 *  Time.deltaTime;
+			NeutronArray[i].transform.position += transform.forward * 3 *  Time.deltaTime;
 		}	
     }
     yield WaitForSeconds (1);
@@ -139,6 +139,8 @@ function Scatter (){
 }
 function clearPN()
 {
+	if(SceneManager.GetActiveScene().buildIndex != 2)
+	{
   	var ProtonArray =  GameObject.FindGameObjectsWithTag ("proton");
     for(var i = 0 ; i < ProtonArray.length ; i ++){
          			Destroy(ProtonArray[i]);	
@@ -147,4 +149,5 @@ function clearPN()
     for(i = 0 ; i < NeutronArray.length ; i ++){
          			Destroy(NeutronArray[i]);	
     }	
+    }
 }
