@@ -33,6 +33,8 @@ function Start () {
 function Update (){
 	if(electrons > 0 && electrons <= 56 ){
  	 CreateSmall();
+ 	  setScale();
+
   
  	}
 	else{
@@ -43,6 +45,8 @@ function Update (){
    		CreateSmall();
    		electrons = electronsToRemember + 2;
    		Instantiate(electronSprite, Vector3(Mathf.Cos((4*Mathf.PI/16))*3.5, Mathf.Sin((4*Mathf.PI/16))*3.5, 0), Quaternion.identity);
+   		setScale();
+
   	}
   	else if(electrons > 57 && electrons <= 77 ){
    		electronsToRemember = electrons - 58;
@@ -51,6 +55,8 @@ function Update (){
    		CreateSmall();
    		electrons = electronsToRemember + 2;
    		CreateMedium ();
+   		 setScale();
+
   	}
  	 else if(electrons > 77 && electrons <= 79){ 
       	electronsToRemember = electrons - 57;
@@ -60,6 +66,8 @@ function Update (){
       	electrons = electronsToRemember + 2;
       	shift = 0;
    	  	CreateMedium ();
+   	  	 setScale();
+
  	}
  	 else if(electrons > 79 && electrons <= 86){ 
       	electronsToRemember = electrons - 58;
@@ -69,6 +77,8 @@ function Update (){
       	electrons = electronsToRemember + 2;
       	shift = 0;
    	  	CreateMedium ();
+   	  	 setScale();
+
  	}
  	else if(electrons > 86 && electrons <= 90){ 
       	electronsToRemember = electrons - 60;
@@ -78,6 +88,8 @@ function Update (){
       	electrons = electronsToRemember + 2;
       	shift = 0;
    	  	CreateMedium ();
+   	  	 setScale();
+
  	}
  	else if(electrons > 90 && electrons <= 93){ 
       	electronsToRemember = electrons - 60;
@@ -89,6 +101,8 @@ function Update (){
    	  	CreateMedium ();
    	  	electrons = electronsToRemember + 2;
    	  	CreateBig ();
+   	  	 setScale();
+
  	}
  	else if(electrons > 93 && electrons <= 95){ 
       	electronsToRemember = electrons - 60;
@@ -100,6 +114,8 @@ function Update (){
    	  	CreateMedium ();
    	  	electrons = electronsToRemember - 28;
    	  	CreateBig ();
+   	  	 setScale();
+
  	}
  	else if(electrons > 95 && electrons <= 96){ 
       	electronsToRemember = electrons - 60;
@@ -111,6 +127,8 @@ function Update (){
    	  	CreateMedium ();
    	  	electrons = electronsToRemember - 29;
    	  	CreateBig ();
+   	  	 setScale();
+
  	}
  	else if(electrons > 97 && electrons <= 102){ 
       	electronsToRemember = electrons - 60;
@@ -122,6 +140,8 @@ function Update (){
    	  	CreateMedium ();
    	  	electrons = electronsToRemember - 28;
    	  	CreateBig ();
+   	  	 setScale();
+
  	}
  	else if(electrons > 102 && electrons <= 103){ 
       	electronsToRemember = electrons - 61;
@@ -133,6 +153,8 @@ function Update (){
    	  	CreateMedium ();
    	  	electrons = electronsToRemember - 28;
    	  	CreateBig ();
+   	  	 setScale();
+
  	}
  	else if(electrons > 103 && electrons <= 109){ 
       	electronsToRemember = electrons - 60;
@@ -144,6 +166,8 @@ function Update (){
    	  	CreateBig ();
    	  	electrons = electronsToRemember - 12;
    	  	CreateMedium ();
+   	  	 setScale();
+
  	}
  	else if(electrons > 109 && electrons <= 111){ 
       	electronsToRemember = electrons - 59;
@@ -155,12 +179,16 @@ function Update (){
    	  	CreateBig ();
    	  	electrons = electronsToRemember - 12;
    	  	CreateMedium ();
+   	  	 setScale();
+
  	}
  	else if(electrons > 111 && electrons <= 118){ 
       	CreateMedium();
       	CreateBig();
       	electrons += 2;
       	CreateSmall();
+      	 setScale();
+
  	}
 }
 
