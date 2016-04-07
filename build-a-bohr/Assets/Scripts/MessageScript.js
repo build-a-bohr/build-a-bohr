@@ -220,7 +220,7 @@ function Update() {
 			Curie.gameObject.SetActive(true);
 		
 		}
-		else if(messageVal == 19)
+		else if(messageVal == 20)
 		{
 			Rutherford.gameObject.SetActive(false);
 			Chadwick.gameObject.SetActive(false);
@@ -229,7 +229,7 @@ function Update() {
 			Curie.gameObject.SetActive(false);
 		
 		}
-		else if(messageVal >= 20 && messageVal < 23)
+		else if(messageVal >= 21 && messageVal < 23)
 		{
 			Rutherford.gameObject.SetActive(false);
 			Chadwick.gameObject.SetActive(false);
